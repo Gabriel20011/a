@@ -56,7 +56,7 @@ public class Controlador extends HttpServlet {
 				ciudades.add(miresult.getString("ciudad"));
 			}
 
-			request.setAttribute("Nombre_usuario", nombres);
+			request.setAttribute("Nombre_usuario", apellidos);
 			request.setAttribute("Apellido_usuario", apellidos);
 			request.setAttribute("Edad_usuario", edades);
 			request.setAttribute("Genero_usuario", generos);
