@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -20,14 +21,14 @@ import co.edu.unbosque.model.Usuario;
 @WebServlet("/Controlador")
 public class Controlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Controlador() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Controlador() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,25 +37,35 @@ public class Controlador extends HttpServlet {
 		// TODO Auto-generated method stub4
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			
+
 			Connection miConexion = DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/KEnYASeHJe", "KEnYASeHJe", "j9ff5yEYdI");
-			java.sql.Statement stament = miConexion.createStatement();
+			Statement stament = miConexion.createStatement();
 			ResultSet miresult = stament.executeQuery("SELECT * FROM datos");
 			int i=0;
-			ArrayList<String> usu = new ArrayList<String>();
+			ArrayList<String> nombres = new ArrayList<String>();
+			ArrayList<String> apellidos = new ArrayList<String>();
+			ArrayList<String> edades = new ArrayList<String>();
+			ArrayList<String> generos = new ArrayList<String>();
+			ArrayList<String> paises = new ArrayList<String>();
+			ArrayList<String> ciudades = new ArrayList<String>();
+
 			while(miresult.next()) {
 				i+=1;
-//				String nombre= miresult.getString("nombre");
-//				String apellido= miresult.getString("apellido");
-//				String edad= miresult.getString("edad");
-//				String genero= miresult.getString("genero");
-//				String pais= miresult.getString("pais");
-//				String ciudad= miresult.getString("ciudad");
-//				Usuario almacen = new Usuario(nombre, apellido, edad, genero, pais, ciudad);
-				usu.add(miresult.getString("nombre"));
+						nombres.add(miresult.getString("nombre"));
+						apellidos.add(miresult.getString("apellido"));
+						edades.add(miresult.getString("edad"));
+						generos.add(miresult.getString("genero"));
+						paises.add(miresult.getString("pais"));
+						ciudades.add(miresult.getString("ciudad"));
 			}
-			request.setAttribute("lista_usuario", usu);
-			request.setAttribute("numero_resultado", i);
+			
+			request.setAttribute("Nombre_usuario", nombres);
+			request.setAttribute("Apellido_usuario", apellidos);
+			request.setAttribute("Edad_usuario", edades);
+			request.setAttribute("Genero_usuario", generos);
+			request.setAttribute("Pais_usuario", paises);
+			request.setAttribute("Ciudad_usuario", ciudades);
+			request.setAttribute("numeroresultado", i);
 			RequestDispatcher miDis = request.getRequestDispatcher("/sofia.jsp");
 			miDis.forward(request, response);
 		} catch (Exception e) {
