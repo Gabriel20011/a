@@ -47,18 +47,19 @@ public class DAO {
 	
 	public ArrayList<String> noRepetidosYOrdenados(ArrayList<String> parametro) {
 		ArrayList<String> nomb = new ArrayList<String>();
-		boolean esta = false;
+		boolean noRepetido = false;
+		int j = 0;
 		nomb.add(parametro.get(0));
 		for (int i = 0; i < nomb.size() ; i++) {
-			for (int j = 0 ; j < parametro.size() ; j++) {
-				if (nomb.get(i).equals(parametro.get(j))) {
-					esta = true;
+			while (noRepetido == false || j < parametro.size()) {
+				if (!nomb.get(i).equals(j)) {
+					noRepetido = true;
 				}
+				else {
+					j++;
+				}
+				
 			}
-			if (esta == false) {
-				nomb.add(parametro.get(i));
-			}
-			esta = false;
 		}
 		ordenarAlfabeticamente(nomb);
 		for (String i : nomb) {
