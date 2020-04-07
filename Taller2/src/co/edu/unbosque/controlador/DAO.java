@@ -52,19 +52,18 @@ public class DAO {
 		nomb.add(parametro.get(0));
 		for (int i = 0; i < nomb.size() ; i++) {
 			while (noRepetido == false || j < parametro.size()) {
-				if (!nomb.get(i).equals(j)) {
+				if (!nomb.get(i).equals(parametro.get(j))) {
 					noRepetido = true;
 				}
-				else {
-					j++;
-				}
-				
+				j++;
 			}
+			if (noRepetido) {
+				nomb.add(parametro.get(j-1));
+			}
+			j = 0;
+			noRepetido = false;
 		}
 		ordenarAlfabeticamente(nomb);
-		for (String i : nomb) {
-			System.out.println(i);
-		}
 		return nomb;
 		
 	}
