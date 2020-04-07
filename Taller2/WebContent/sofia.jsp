@@ -8,7 +8,6 @@
 <title>Taller 2</title>
 </head>
 <body>
-<h3>PERSONAS BASE DE DATOS: <font color="red">${numeroresultado}</font></h3>
 <div id="Nombre">
 <h4>Nombre</h4>
 	<select id="Nombre">
@@ -63,7 +62,8 @@
 	</c:forEach>
 	</select>
 </div>
-	<input type="button" value="buscar">
-	<table></table>
+<form method="post">
+	<input type="button" value="buscar" >
+	</form>
 </body>
 </html>
