@@ -46,7 +46,6 @@ public class Controlador extends HttpServlet {
 			ArrayList<String> generos = new ArrayList<String>();
 			ArrayList<String> paises = new ArrayList<String>();
 			ArrayList<String> ciudades = new ArrayList<String>();
-			ArrayList<String> usuario = new ArrayList<String>();
 			while(miresult.next()) {
 				i+=1;
 				nombres.add(miresult.getString("nombre"));
@@ -55,8 +54,6 @@ public class Controlador extends HttpServlet {
 				generos.add(miresult.getString("genero"));
 				paises.add(miresult.getString("pais"));
 				ciudades.add(miresult.getString("ciudad"));
-				usuario.add(miresult.getString("nombre")+ " "+miresult.getString("apellido")+ " "+miresult.getString("edad")+ " "+
-						miresult.getString("genero")+ " "+miresult.getString("pais")+ " "+miresult.getString("ciudad"));
 			}
 
 			request.setAttribute("Nombre_usuario", nombres);
@@ -66,7 +63,6 @@ public class Controlador extends HttpServlet {
 			request.setAttribute("Pais_usuario", paises);
 			request.setAttribute("Ciudad_usuario", ciudades);
 			request.setAttribute("numeroresultado", i);
-			request.setAttribute("usuarios", usuario);
 			RequestDispatcher miDis = request.getRequestDispatcher("/sofia.jsp");
 			miDis.forward(request, response);
 		} catch (Exception e) {
