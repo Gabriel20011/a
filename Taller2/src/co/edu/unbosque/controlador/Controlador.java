@@ -26,6 +26,7 @@ public class Controlador extends HttpServlet {
 	 */
 	public Controlador() {
 		super();
+		DAO = new DAO();
 		
 		// TODO Auto-generated constructor stub
 	}
