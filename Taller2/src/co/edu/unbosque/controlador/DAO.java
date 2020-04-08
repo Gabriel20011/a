@@ -2,6 +2,7 @@ package co.edu.unbosque.controlador;
 
 import java.util.ArrayList;
 
+
 public class DAO {
 	
 	private ArrayList<String> nombres;
@@ -47,22 +48,22 @@ public class DAO {
 	
 	public ArrayList<String> noRepetidosYOrdenados(ArrayList<String> parametro) {
 		ArrayList<String> nomb = new ArrayList<String>();
-		boolean noRepetido = false;
-		int j = 0;
-		nomb.add(parametro.get(0));
-		for (int i = 0; i < nomb.size() ; i++) {
-			while (noRepetido == false || j < parametro.size()) {
-				if (!nomb.get(i).equals(parametro.get(j))) {
-					noRepetido = true;
-				}
-				j++;
-			}
-			if (noRepetido) {
-				nomb.add(parametro.get(j-1));
-			}
-			j = 0;
-			noRepetido = false;
+		for (String i : parametro) {
+			nomb.add(i);
 		}
+		ArrayList<Integer> rep = new ArrayList<Integer>();
+		for (int i = 0 ; i < nomb.size() ; i++) {
+			for (int j = i ; j < nomb.size() ; j++) {
+				if (nomb.get(i).equals(nomb.get(j)) && i != j) {
+					rep.add(j);
+				}
+			}
+			for (int j = 0 ; j < rep.size() ; j++) {
+				nomb.remove(rep.get(j) - j);
+			}
+			rep = new ArrayList<Integer>();
+		}
+		
 		ordenarAlfabeticamente(nomb);
 		return nomb;
 		
