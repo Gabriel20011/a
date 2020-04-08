@@ -1,4 +1,81 @@
+@charset "ISO-8859-1";
+
+body {
+	color: white;
+	background-color: #230142;
+	font-family: arial;
+	text-align: center;
+}
 .cuerpo{
-	background-color: gray;
-	margin: 10 px
+	color: white;
+	text-align: left;
+}
+.titulo{
+	color: white;
+}
+.tipo {
+	border: 7px inset #1A0044;
+}
+
+.boton {
+	text-align: center;
+	cursor: pointer;
+	color: white;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 8px;
+	border-radius: 29px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+	background-image: linear-gradient(to right, rgb(42, 11, 48) 0%,
+		rgb(70, 0, 162) 50%, rgb(44, 7, 86) 100%);
+	border: 9px inset rgb(60, 2, 57);
+}
+
+.boton:hover {
+	background: #2A0B30;
+	
+}
+
+.boton:active {
+	background: #2C0756;
+}
+
+.div {
+	cursor: pointer;
+	text-align: center;
+	color:white;
+}
+
+.cantidad {
+
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
+	
+}
+
+.precio {
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
+}
+
+.Nombre {
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
+}
+
+.apellido {
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
+}
+
+.tarjeta {
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
+}
+
+.confirmar {
+	border-top: "10px"
+	border: 7px inset #1A0044;
+	background-color: #E6C3FF;
 }
