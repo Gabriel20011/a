@@ -1,4 +1,4 @@
-@charset "ISO-8859-1";
+@charset "UTF-8";
 
 body {
 	color: white;
@@ -17,6 +17,7 @@ body {
 .tipo {
 	border: 7px inset #1A0044;
 }
+
 .button {
 	text-align: center;
 	cursor: pointer;
@@ -33,7 +34,7 @@ body {
 	border: 9px inset rgb(60, 2, 57);
 }
 option {
-	
+
 	text-align: center;
 	cursor: pointer;
 	color: white;
@@ -48,25 +49,26 @@ option {
 	border: 9px inset rgb(60, 2, 57);
 }
 
+.boton:hover {
+	background: #2A0B30;
+}
+.boton:active {
+	background: #2C0756;
+}
 
 .div {
 	cursor: pointer;
 	text-align: center;
 	color:white;
 }
-
 .cantidad {
-
 	border: 7px inset #1A0044;
 	background-color: #E6C3FF;
-	
 }
-
 .precio {
 	border: 7px inset #1A0044;
 	background-color: #E6C3FF;
 }
-
 .Nombre {
 	border: 7px inset #1A0044;
 	background-color: #E6C3FF;
