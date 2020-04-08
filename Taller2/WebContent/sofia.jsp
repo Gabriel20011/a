@@ -62,6 +62,6 @@
 	</c:forEach>
 	</select>
 </div>
-	<input type="button" value="buscar" >
+	<input type="button" value="buscar" class="button">
 </body>
 </html>
