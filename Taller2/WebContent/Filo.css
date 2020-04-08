@@ -13,9 +13,11 @@ body {
 .titulo{
 	color: white;
 }
+
 .tipo {
 	border: 7px inset #1A0044;
 }
+
 .button {
 	text-align: center;
 	cursor: pointer;
@@ -31,6 +33,7 @@ body {
 	size: 300px;
 	border: 9px inset rgb(60, 2, 57);
 }
+
 option {
 	text-align: center;
 	cursor: pointer;
