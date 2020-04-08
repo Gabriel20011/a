@@ -44,6 +44,7 @@ public class Controlador extends HttpServlet {
 			int i=0;
 			while(miresult.next()) {
 				i+=1;
+				System.out.println(i);
 				DAO.agregarNombre(miresult.getString("nombre"));
 				DAO.agregarApellido(miresult.getString("apellido"));
 				DAO.agregarEdad(miresult.getString("edad"));

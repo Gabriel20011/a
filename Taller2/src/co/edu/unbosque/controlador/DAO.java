@@ -2,6 +2,7 @@ package co.edu.unbosque.controlador;
 
 import java.util.ArrayList;
 
+
 public class DAO {
 
 	private ArrayList<String> nombres;
@@ -47,35 +48,31 @@ public class DAO {
 
 	public ArrayList<String> noRepetidosYOrdenados(ArrayList<String> parametro) {
 		ArrayList<String> nomb = new ArrayList<String>();
-		boolean noRepetido = false;
-		int j = 0;
-		nomb.add(parametro.get(0));
-		for (int i = 0; i < parametro.size() ; i++) {
-			while (noRepetido == false || j < parametro.size()) {
-				if (!nomb.get(i).equals(parametro.get(j))) {
-					noRepetido = true;
+		for (String i : parametro) {
+			nomb.add(i);
+		}
+		ArrayList<Integer> rep = new ArrayList<Integer>();
+		for (int i = 0 ; i < nomb.size() ; i++) {
+			for (int j = i ; j < nomb.size() ; j++) {
+				if (nomb.get(i).equals(nomb.get(j)) && i != j) {
+					rep.add(j);
 				}
-				j++;	
 			}
-			if(noRepetido) {
-				nomb.add(parametro.get(j-1));
+			for (int j = 0 ; j < rep.size() ; j++) {
+				nomb.remove(rep.get(j) - j);
 			}
-			j=0;
-			noRepetido = false;
+			rep = new ArrayList<Integer>();
 		}
+		
 		ordenarAlfabeticamente(nomb);
-		for (String i : nomb) {
-		}
 		return nomb;
-
 	}
-
 	private void ordenarAlfabeticamente(ArrayList<String> arreglo) {
 		String auxIn;
 		for (int i = 0; i < arreglo.size(); i++) {
 			auxIn = arreglo.get(i);
 			for (int j = 0 ; j < i ; j++) {
-				if (arreglo.get(j).compareTo(auxIn) <  0 ) {
+				if (arreglo.get(j).compareTo(auxIn) >  0 ) {
 					arreglo.set(i, arreglo.get(j));
 					arreglo.set(j, auxIn);
 					auxIn = arreglo.get(i);
@@ -83,8 +80,6 @@ public class DAO {
 			}
 		}
 	}
-
-
 	public ArrayList<String> getNombres() {
 		return nombres;
 	}
