@@ -24,6 +24,7 @@ public class Controlador extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Usuario> usuarios;
+	private ArrayList<Usuario> filtrados;
 	private DTO DTO;
 
 	/**
@@ -31,6 +32,7 @@ public class Controlador extends HttpServlet {
 	 */
 	public Controlador() {
 		super();
+		filtrados = new ArrayList<Usuario>();
 		usuarios = new ArrayList<Usuario>();
 		DTO = new DTO();
 		DTO.cargarUsuarios(usuarios);
@@ -67,27 +69,51 @@ public class Controlador extends HttpServlet {
 
 		PrintWriter p = response.getWriter();
 		String respuesta = "";
-		respuesta = "Filtrado para:"+" "+request.getParameter("Nombre_usuario")+" "+request.getParameter("Apellido_usuario")+" "+request.getParameter("Edad_usuario")
-		+" "+request.getParameter("Genero_usuario")+" "+request.getParameter("Pais_usuario")+" "+request.getParameter("Ciudad_usuario"); 
+		String nombre = request.getParameter("Nombre_usuario");
+		String apellido = request.getParameter("Apellido_usuario");
+		String edad = request.getParameter("Edad_usuario");
+		String genero = request.getParameter("Genero_usuario");
+		String pais = request.getParameter("Pais_usuario");
+		String ciudad = request.getParameter("Ciudad_usuario");
+		
+		respuesta = "Filtrado para:"+" "+nombre+" "+apellido+" "+edad+" "+genero+" "+pais+" "+ciudad; 
+		filtrados = filtrar(nombre, apellido, edad, genero, pais, ciudad);
+			for (int i = 0; i < filtrados.size(); i++) {
+				System.out.println(filtrados.get(i));
+			}
 		p.print("<!DOCTYPE html>     ");
 		p.print("<html>     ");
 		p.print("<head>     ");
-		p.print("<meta charset=\"UTF-8\">     ");
+		p.print("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />");
 		p.print("<title>Resultado</title>     ");
 		p.print("<h1>"+respuesta+"</h1>     ");
 		p.print("</head>     ");
 		p.print("<body>     ");
 		p.print("<link type=\"text/css\" rel=\"stylesheet\" href=\"Filo.css\" />");
 		p.print("<table>     ");
-		for (Usuario i : usuarios) {
-			p.print("<tr>     ");
-			p.print("<td>"+i.getNombre()+"</td>");
-			p.print("<td>"+i.getApellido()+"</td>");
-			p.print("<td>"+i.getEdad()+"</td>");
-			p.print("<td>"+i.getGenero()+"</td>");
-			p.print("<td>"+i.getPais()+"</td>");
-			p.print("<td>"+i.getCiudad()+"</td>");
-			p.print("</tr>     ");
+		if (filtrados.size()==0) {
+			for (Usuario i : usuarios) {
+				p.print("<tr>     ");
+				p.print("<td>"+i.getNombre()+"</td>");
+				p.print("<td>"+i.getApellido()+"</td>");
+				p.print("<td>"+i.getEdad()+"</td>");
+				p.print("<td>"+i.getGenero()+"</td>");
+				p.print("<td>"+i.getPais()+"</td>");
+				p.print("<td>"+i.getCiudad()+"</td>");
+				p.print("</tr>     ");
+			}
+		}
+		else {
+			for (Usuario i : filtrados) {
+				p.print("<tr>     ");
+				p.print("<td>"+i.getNombre()+"</td>");
+				p.print("<td>"+i.getApellido()+"</td>");
+				p.print("<td>"+i.getEdad()+"</td>");
+				p.print("<td>"+i.getGenero()+"</td>");
+				p.print("<td>"+i.getPais()+"</td>");
+				p.print("<td>"+i.getCiudad()+"</td>");
+				p.print("</tr>     ");
+			}
 		}
 
 		p.print("</c:forEach>     ");
@@ -100,12 +126,12 @@ public class Controlador extends HttpServlet {
 			String edad, String genero, String pais, String ciudad) {
 		ArrayList<Usuario> ahPerro = new ArrayList<Usuario>();
 		for (Usuario i : usuarios) {
-			if (i.getNombre().equals(nombre) || nombre == null) {
-				if (i.getApellido().equals(apellido) || apellido == null) {
-					if (i.getEdad().equals(edad) || edad.equals("0")) {
-						if (i.getGenero().equals(genero) || genero.equals("0")) {
-							if (i.getPais().equals(pais) || pais == null ) {
-								if (i.getCiudad().equals(ciudad) || ciudad == null) {
+			if (i.getNombre().equals(nombre) || nombre.equals("-Nombres-")) {
+				if (i.getApellido().equals(apellido) || apellido.equals("-Apellidos-")) {
+					if (i.getEdad().equals(edad) || edad.equals("-Edades-")) {
+						if (i.getGenero().equals(genero) || genero.equals("-Generos-")) {
+							if (i.getPais().equals(pais) || pais.equals("-Paises-")) {
+								if (i.getCiudad().equals(ciudad) || ciudad.equals("-Ciudades-")) {
 									ahPerro.add(i);
 								}
 							}
@@ -114,6 +140,7 @@ public class Controlador extends HttpServlet {
 				}
 			}
 		}
+		System.out.println("Filtrado para:"+" "+nombre+" "+apellido+" "+edad+" "+genero+" "+pais+" "+ciudad);
 		return ahPerro;
 	}
 }

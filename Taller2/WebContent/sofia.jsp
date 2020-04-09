@@ -47,18 +47,18 @@
 	</select>
 	</div>
 	<div id="Pais">
-		<h4>Pais</h4>
+		<h4>Paises</h4>
 	<select id="Pais" name= "Pais_usuario">
-		<option >-Pais-</option>
+		<option >-Paises-</option>
 		<c:forEach items="${Pais_usuario}" var="pais"  >
 	<option>${pais}</option>
 	</c:forEach>
 	</select>
 	</div>
 	<div id="Ciudad">
-		<h4>Ciudad</h4>
+		<h4>Ciudades</h4>
 	<select id="Ciudad" name= "Ciudad_usuario">
-		<option >-Ciudad-</option>
+		<option >-Ciudades-</option>
 		<c:forEach items="${Ciudad_usuario}" var="ciudad" >
 	<option>${ciudad}</option>
 	</c:forEach>
