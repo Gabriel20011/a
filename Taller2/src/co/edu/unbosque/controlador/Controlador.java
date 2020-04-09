@@ -54,7 +54,7 @@ public class Controlador extends HttpServlet {
 		request.setAttribute("Ciudad_usuario", DTO.noRepetidosYOrdenadosCiudad(usuarios));
 		request.setAttribute("numeroresultado", usuarios.size());
 		RequestDispatcher miDis = request.getRequestDispatcher("/sofia.jsp");
-		
+
 		miDis.forward(request, response);
 
 	}
@@ -64,48 +64,47 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<Usuario> filtro;
-		
-		String respuesta = "Filtrado para:"+" "+request.getParameter("Nombre_usuario")+" "+request.getParameter("Apellido_usuario")+" "+request.getParameter("Edad_usuario")
-		+" "+request.getParameter("Genero_usuario")+" "+request.getParameter("Pais_usuario")+" "+request.getParameter("Ciudad_usuario");
-		
-		
-		
-		request.setAttribute("NCOLUMNAS", o);
-		request.setAttribute("respuestra", respuesta);
-		request.setAttribute("Nombre_usuario", request.getParameter("Nombre_usuario"));
-		
+
+		String nombre = request.getParameter("Nombre_usuario");
+		String apellido = request.getParameter("Apellido_usuario");
+		String edad = request.getParameter("Edad_usuario");
+		String genero = request.getParameter("Genero_usuario");
+		String pais = request.getParameter("Pais_usuario");
+		String ciudad = request.getParameter("Ciudad_usuario");
+
+		ArrayList<Usuario> filtro = filtrar(nombre, apellido, edad, genero, pais, ciudad);
+
+		String respuesta = "Filtrado para:"+" "+nombre+" "+apellido+" "+edad
+				+" "+genero+" "+pais+" "+ciudad;
+
+		int nPaginas = 1;
+		for (int i = 0 ; i < filtro.size() ; i++) {
+			if (i % 50 == 0) {
+				nPaginas ++;
+			}
+		}
+
+		System.out.println(nPaginas);
+		request.setAttribute("nPaginas", nPaginas );
+		request.setAttribute("respuesta", respuesta);
+		request.setAttribute("Filtrados", filtro);
+
 		RequestDispatcher rd = request.getRequestDispatcher("gabox.jsp");
 		rd.forward(request, response);
 
-		 
-//		p.print("<h1>"+respuesta+"</h1>     ");
-//		p.print("<table>     ");
-//		for (Usuario i : usuarios) {
-//			p.print("<tr>     ");
-//			p.print("<td>"+i.getNombre()+"</td>");
-//			p.print("<td>"+i.getApellido()+"</td>");
-//			p.print("<td>"+i.getEdad()+"</td>");
-//			p.print("<td>"+i.getGenero()+"</td>");
-//			p.print("<td>"+i.getPais()+"</td>");
-//			p.print("<td>"+i.getCiudad()+"</td>");
-//			p.print("</tr>     ");
-//		}
-//		p.print("</table>     ");
-//		p.print("</body>     ");
-//		p.print("</html>     ");
+
 	}
 
 	public ArrayList<Usuario> filtrar(String nombre, String apellido, 
 			String edad, String genero, String pais, String ciudad) {
 		ArrayList<Usuario> ahPerro = new ArrayList<Usuario>();
 		for (Usuario i : usuarios) {
-			if (i.getNombre().equals(nombre) || nombre == null) {
-				if (i.getApellido().equals(apellido) || apellido == null) {
-					if (i.getEdad().equals(edad) || edad.equals("0")) {
-						if (i.getGenero().equals(genero) || genero.equals("0")) {
-							if (i.getPais().equals(pais) || pais == null ) {
-								if (i.getCiudad().equals(ciudad) || ciudad == null) {
+			if (i.getNombre().equals(nombre) || nombre.equals("-Nombres-")) {
+				if (i.getApellido().equals(apellido) || apellido.equals("-Apellidos-")) {
+					if (i.getEdad().equals(edad) || edad.equals("-Edades-")) {
+						if (i.getGenero().equals(genero) || genero.equals("-Generos-")) {
+							if (i.getPais().equals(pais) || pais.equals("-Paises-") ) {
+								if (i.getCiudad().equals(ciudad) || ciudad.equals("-Ciudades-")) {
 									ahPerro.add(i);
 								}
 							}
