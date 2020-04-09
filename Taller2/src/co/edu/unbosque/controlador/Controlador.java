@@ -92,31 +92,33 @@ public class Controlador extends HttpServlet {
 		p.print("<link type=\"text/css\" rel=\"stylesheet\" href=\"Filo.css\" />");
 		p.print("<table>     ");
 		if (filtrados.size()==0) {
-			for (Usuario i : usuarios) {
+			for (int i = 0; i < usuarios.size(); i++) {
+				if (i%50==0) {
+					
+				}
 				p.print("<tr>     ");
-				p.print("<td>"+i.getNombre()+"</td>");
-				p.print("<td>"+i.getApellido()+"</td>");
-				p.print("<td>"+i.getEdad()+"</td>");
-				p.print("<td>"+i.getGenero()+"</td>");
-				p.print("<td>"+i.getPais()+"</td>");
-				p.print("<td>"+i.getCiudad()+"</td>");
+				p.print("<td>"+usuarios.get(i).getNombre()+"</td>");
+				p.print("<td>"+usuarios.get(i).getApellido()+"</td>");
+				p.print("<td>"+usuarios.get(i).getEdad()+"</td>");
+				p.print("<td>"+usuarios.get(i).getGenero()+"</td>");
+				p.print("<td>"+usuarios.get(i).getPais()+"</td>");
+				p.print("<td>"+usuarios.get(i).getCiudad()+"</td>");
 				p.print("</tr>     ");
 			}
 		}
 		else {
-			for (Usuario i : filtrados) {
+			for (int i = 0; i < filtrados.size(); i++) {
+
 				p.print("<tr>     ");
-				p.print("<td>"+i.getNombre()+"</td>");
-				p.print("<td>"+i.getApellido()+"</td>");
-				p.print("<td>"+i.getEdad()+"</td>");
-				p.print("<td>"+i.getGenero()+"</td>");
-				p.print("<td>"+i.getPais()+"</td>");
-				p.print("<td>"+i.getCiudad()+"</td>");
+				p.print("<td>"+filtrados.get(i).getNombre()+"</td>");
+				p.print("<td>"+filtrados.get(i).getApellido()+"</td>");
+				p.print("<td>"+filtrados.get(i).getEdad()+"</td>");
+				p.print("<td>"+filtrados.get(i).getGenero()+"</td>");
+				p.print("<td>"+filtrados.get(i).getPais()+"</td>");
+				p.print("<td>"+filtrados.get(i).getCiudad()+"</td>");
 				p.print("</tr>     ");
 			}
 		}
-
-		p.print("</c:forEach>     ");
 		p.print("</table>     ");
 		p.print("</body>     ");
 		p.print("</html>     ");
