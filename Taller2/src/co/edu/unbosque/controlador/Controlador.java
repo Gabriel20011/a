@@ -64,17 +64,17 @@ public class Controlador extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub4
+
 		PrintWriter p = response.getWriter();
-
-
+		String respuesta = "";
+		respuesta = "Filtrado para:"+" "+request.getParameter("Nombre_usuario")+" "+request.getParameter("Apellido_usuario")+" "+request.getParameter("Edad_usuario")
+		+" "+request.getParameter("Genero_usuario")+" "+request.getParameter("Pais_usuario")+" "+request.getParameter("Ciudad_usuario"); 
 		p.print("<!DOCTYPE html>     ");
 		p.print("<html>     ");
 		p.print("<head>     ");
 		p.print("<meta charset=\"UTF-8\">     ");
 		p.print("<title>Resultado</title>     ");
-		p.print("<h1>Resultado</h1>     ");
+		p.print("<h1>"+respuesta+"</h1>     ");
 		p.print("</head>     ");
 		p.print("<body>     ");
 		p.print("<link type=\"text/css\" rel=\"stylesheet\" href=\"Filo.css\" />");
