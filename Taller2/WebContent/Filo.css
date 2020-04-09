@@ -101,6 +101,8 @@ header {
 }
 
 table {
+	color: black;
+	font-weight: bold;
 	border: white 2px solid;
 	background-color : #d7ffd7 ;
 	position:absolute;

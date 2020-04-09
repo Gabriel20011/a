@@ -2,9 +2,11 @@ package co.edu.unbosque.controlador;
 
 import java.util.ArrayList;
 
+import co.edu.unbosque.model.Usuario;
+
 
 public class DAO {
-
+	private ArrayList<Usuario> usuarios;
 	private ArrayList<String> nombres;
 	private ArrayList<String> apellidos;
 	private ArrayList<String> edades;
@@ -13,15 +15,18 @@ public class DAO {
 	private ArrayList<String> ciudades;
 
 	public DAO() {
+		usuarios = new ArrayList<Usuario>();
 		nombres = new ArrayList<String>();
 		apellidos = new ArrayList<String>();
 		edades = new ArrayList<String>();
 		generos = new ArrayList<String>();
 		paises = new ArrayList<String>();
 		ciudades = new ArrayList<String>();
-
+		usuariosDePrueba();
 	}
-
+	public void agregarUsuario(String nombre, String apellido, String edad, String genero, String pais, String ciudad) {
+		usuarios.add(new Usuario(nombre, apellido, edad, genero, pais, ciudad));
+	}
 	public void agregarNombre(String nombre) {
 		nombres.add(nombre);
 	}
@@ -30,8 +35,8 @@ public class DAO {
 		apellidos.add(apellido);
 	}
 
-	public void agregarEdad(String apellido) {
-		edades.add(apellido);
+	public void agregarEdad(String edad) {
+		edades.add(edad);
 	}
 
 	public void agregarGenero(String genero) {
@@ -44,6 +49,13 @@ public class DAO {
 
 	public void agregarCiudad(String ciudad) {
 		ciudades.add(ciudad);
+	}
+	
+	public void usuariosDePrueba(){
+		usuarios.add(new Usuario("Juanito","Alimaña","20", "Masculino", "Colombia", "Bogota"));
+		usuarios.add(new Usuario("Sofia","De Alimaña","18", "Fememino", "Japon", "Tokio"));
+		usuarios.add(new Usuario("Gabriel","Oterga","19", "Masculino", "Polonia", "Helsinski"));
+		usuarios.add(new Usuario("Juanito","Flowers","19", "Masculino", "Inglaterra", "Londres"));
 	}
 
 	public ArrayList<String> noRepetidosYOrdenados(ArrayList<String> parametro) {
@@ -79,6 +91,13 @@ public class DAO {
 				}
 			}
 		}
+	}
+	
+	public ArrayList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(ArrayList<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 	public ArrayList<String> getNombres() {
 		return nombres;
@@ -127,7 +146,5 @@ public class DAO {
 	public void setCiudades(ArrayList<String> ciudades) {
 		this.ciudades = ciudades;
 	}
-
-
 
 }

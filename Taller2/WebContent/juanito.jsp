@@ -11,13 +11,10 @@
 <body>
 <table>
 <c:forEach var="usuarios" items="${usuarios}">
-
 <tr>
 <th>${usuarios}</th>
 </tr>
 </c:forEach>
-
 </table>
-
 </body>
 </html>

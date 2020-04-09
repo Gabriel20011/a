@@ -8,10 +8,12 @@
 <title>Taller 2</title>
 </head>
 <body>
+<form action="<%= request.getContextPath() %>/Controlador"
+	method="post">
 <div id="Nombre">
 <h4>Nombre</h4>
 	<select id="Nombre">
-	<option>-todos</option>
+	<option>-Nombres-</option>
 	<c:forEach items="${Nombre_usuario}" var="nombres">
 	<option>${nombres}</option>
 		</c:forEach>
@@ -20,7 +22,7 @@
 	<div id="Apellido">
 	<h4>Apellido</h4>
 	<select id="Apellido">
-		<option>-todos</option>
+		<option>-Apellidos-</option>
 		<c:forEach items="${Apellido_usuario}" var="apellidos">
 	<option>${apellidos}</option>
 	</c:forEach>
@@ -29,7 +31,7 @@
 	<div id="Edad">
 	<h4>Edad</h4>
 	<select id="Edad">
-		<option>-todos</option>
+		<option>-Edades-</option>
 		<c:forEach items="${Edad_usuario}" var="edad">
 	<option>${edad}</option>
 	</c:forEach>
@@ -38,7 +40,7 @@
 	<div id="Genero">
 		<h4>Genero</h4>
 	<select id="Genero">
-		<option>-todos</option>
+		<option>-Generos-</option>
 		<c:forEach items="${Genero_usuario}" var="genero">
 	<option>${genero}</option>
 	</c:forEach>
@@ -47,7 +49,7 @@
 	<div id="Pais">
 		<h4>Pais</h4>
 	<select id="Pais">
-		<option>-todos</option>
+		<option>-Pais-</option>
 		<c:forEach items="${Pais_usuario}" var="pais">
 	<option>${pais}</option>
 	</c:forEach>
@@ -56,12 +58,13 @@
 	<div id="Ciudad">
 		<h4>Ciudad</h4>
 	<select id="Ciudad">
-		<option>-todos</option>
+		<option>-Ciudad-</option>
 		<c:forEach items="${Ciudad_usuario}" var="ciudad">
 	<option>${ciudad}</option>
 	</c:forEach>
 	</select>
 </div>
-	<input type="button" value="buscar" class="button">
+	<input type="submit" value="buscar" class="button">
+</form>
 </body>
 </html>
