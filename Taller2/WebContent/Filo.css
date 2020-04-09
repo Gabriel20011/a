@@ -10,9 +10,6 @@ body {
 	color: white;
 	text-align: left;
 }
-.titulo{
-	color: white;
-}
 
 .tipo {
 	border: 7px inset #1A0044;
@@ -37,7 +34,7 @@ option {
 
 	text-align: center;
 	cursor: pointer;
-	color: white;
+	color: black;
 	font-size: 16px;
 	line-height: 16px;
 	padding: 8px;
@@ -61,34 +58,7 @@ option {
 	text-align: center;
 	color:white;
 }
-.cantidad {
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
-.precio {
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
-.Nombre {
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
 
-.apellido {
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
-
-.tarjeta {
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
-
-.confirmar {
-	border-top: "10px"
-	border: 7px inset #1A0044;
-	background-color: #E6C3FF;
-}
 header {
 	font-weight: bolder;
 	border: white 2px solid;
@@ -109,5 +79,5 @@ table {
 	border-radius: 10px;
 	text-align: center;
 	border-color: green;
-	width: 98%
+	width: 98%;
 }

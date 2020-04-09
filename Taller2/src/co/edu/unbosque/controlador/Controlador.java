@@ -65,7 +65,6 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		// TODO Auto-generated method stub4
 		PrintWriter p = response.getWriter();
 
