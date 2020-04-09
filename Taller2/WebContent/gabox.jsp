@@ -4,10 +4,6 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		
-		<%  System.out.println((String)request.getAttribute("Nombre_usuario"));
-			System.out.println((String)request.getAttribute("respuesta"));
-		%>
 		<title>Resultado</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
