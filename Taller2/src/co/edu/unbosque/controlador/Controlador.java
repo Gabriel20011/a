@@ -73,6 +73,10 @@ public class Controlador extends HttpServlet {
 		String ciudad = request.getParameter("Ciudad_usuario");
 
 		ArrayList<Usuario> filtro = filtrar(nombre, apellido, edad, genero, pais, ciudad);
+		ArrayList<String> infoF = new ArrayList<String>();
+		for (Usuario i : filtro) {
+			infoF.add(i.toString());
+		}
 
 		String respuesta = "Filtrado para:"+" "+nombre+" "+apellido+" "+edad
 				+" "+genero+" "+pais+" "+ciudad;
@@ -84,10 +88,9 @@ public class Controlador extends HttpServlet {
 			}
 		}
 
-		System.out.println(nPaginas);
 		request.setAttribute("nPaginas", nPaginas );
 		request.setAttribute("respuesta", respuesta);
-		request.setAttribute("Filtrados", filtro);
+		request.setAttribute("Filtrados", infoF);
 
 		RequestDispatcher rd = request.getRequestDispatcher("gabox.jsp");
 		rd.forward(request, response);
