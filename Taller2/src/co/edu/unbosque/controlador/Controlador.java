@@ -47,8 +47,6 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter p = response.getWriter();
-
 		request.setAttribute("Nombre_usuario", DTO.noRepetidosYOrdenadosNombre(usuarios));
 		request.setAttribute("Apellido_usuario", DTO.noRepetidosYOrdenadosApellido(usuarios));
 		request.setAttribute("Edad_usuario", DTO.noRepetidosYOrdenadosEdad(usuarios));
@@ -90,7 +88,7 @@ public class Controlador extends HttpServlet {
 		p.print("</head>     ");
 		p.print("<body>     ");
 		p.print("<link type=\"text/css\" rel=\"stylesheet\" href=\"Filo.css\" />");
-		p.print("<table>     ");
+		p.print("<table id=\"tablax\">     ");
 		if (filtrados.size()==0) {
 			for (int i = 0; i < usuarios.size(); i++) {
 				if (i%50==0) {
@@ -120,6 +118,15 @@ public class Controlador extends HttpServlet {
 			}
 		}
 		p.print("</table>     ");
+		p.print("<script src= \"https://code.jquery.com/jquery-3.4.1.js\" integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\" crossorigin=\"anonymous\">");
+		p.print("</script>");
+		p.print("<script src= \"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\">");
+		p.print("</script>");
+		p.print("<script>");
+		p.print("$(document).ready(function() {");
+		p.print("$('#tablax').DataTable();");
+		p.print("});");
+		p.print("</script>");
 		p.print("</body>     ");
 		p.print("</html>     ");
 	}
