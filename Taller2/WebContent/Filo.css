@@ -15,6 +15,22 @@ body {
 	border: 7px inset #1A0044;
 }
 
+select{
+	width: 300px;
+	text-align: center;
+	cursor: pointer;
+	color: black;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 8px;
+	border-radius: 29px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+	background-image: linear-gradient(to right, rgb(42, 11, 48) 0%,
+		rgb(70, 0, 162) 50%, #00ffff50720100%);
+	border: 9px inset rgb(60, 2, 57);
+}
+
 .button {
 	text-align: center;
 	cursor: pointer;
@@ -27,7 +43,7 @@ body {
 	font-weight: bold;
 	background-image: linear-gradient(to right, rgb(42, 11, 48) 0%,
 		rgb(70, 0, 162) 50%, rgb(44, 7, 86) 100%);
-	size: 300px;
+	width: 300px;
 	border: 9px inset rgb(60, 2, 57);
 }
 option {
