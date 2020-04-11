@@ -8,11 +8,9 @@ import co.edu.unbosque.model.Usuario;
 
 public class DTO {
 	
-	public DTO(){
-		
+	public DTO(){	
 	}
 	
-
 	public void cargarUsuarios(ArrayList<Usuario> us)  {
 		Connection con = null;
 		Statement statement = null;

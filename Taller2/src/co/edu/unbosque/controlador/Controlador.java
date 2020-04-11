@@ -79,7 +79,7 @@ public class Controlador extends HttpServlet {
 				infoF.add(i.toString());
 			}
 		}
-
+		
 		String respuesta = "Filtrado para:"+" "+nombre+" "+apellido+" "+edad
 				+" "+genero+" "+pais+" "+ciudad;
 
