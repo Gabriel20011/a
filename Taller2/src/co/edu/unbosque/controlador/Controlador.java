@@ -45,6 +45,7 @@ public class Controlador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+
 		request.setAttribute("Nombre_usuario", DTO.noRepetidosYOrdenadosNombre(usuarios));
 		request.setAttribute("Apellido_usuario", DTO.noRepetidosYOrdenadosApellido(usuarios));
 		request.setAttribute("Edad_usuario", DTO.noRepetidosYOrdenadosEdad(usuarios));
@@ -74,7 +75,9 @@ public class Controlador extends HttpServlet {
 		ArrayList<Usuario> filtro = filtrar(nombre, apellido, edad, genero, pais, ciudad);
 		ArrayList<String> infoF = new ArrayList<String>();
 		for (Usuario i : filtro) {
-			infoF.add(i.toString());
+			if (!i.toString().contains("\'")) {
+				infoF.add(i.toString());
+			}
 		}
 
 		String respuesta = "Filtrado para:"+" "+nombre+" "+apellido+" "+edad
@@ -85,13 +88,15 @@ public class Controlador extends HttpServlet {
 			if (i % 50 == 0) {
 				nPaginas ++;
 			}
+		}
+
 		request.setAttribute("nPaginas", nPaginas );
 		request.setAttribute("respuesta", respuesta);
 		request.setAttribute("Filtrados", infoF);
 
 		RequestDispatcher rd = request.getRequestDispatcher("gabox.jsp");
 		rd.forward(request, response);
-		}
+
 	}
 
 	public ArrayList<Usuario> filtrar(String nombre, String apellido, 

@@ -43,7 +43,7 @@ select{
 	font-weight: bold;
 	background-image: linear-gradient(to right, rgb(42, 11, 48) 0%,
 		rgb(70, 0, 162) 50%, rgb(44, 7, 86) 100%);
-	width: 300px;
+	width: 250px;
 	border: 9px inset rgb(60, 2, 57);
 }
 option {

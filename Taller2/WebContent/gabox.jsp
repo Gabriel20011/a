@@ -15,13 +15,17 @@
 		<% 
 		ArrayList<String> usus = (ArrayList<String>) request.getAttribute("Filtrados");
 		for(int i = 0 ; i < usus.size(); i++){
-			out.println("<script>"+ "cargarUsuarios(\"" + usus.get(i)+"\")" + "</script>");
+			out.println("<script>"+ "loadList('" + usus.get(i) +"')" + "</script>");
 		}
-		%>
 		
-		<input type="button" id="first" onclick="firstPage()" value="first" />
-		<input type="button" id="next" onclick="nextPage()" value="next" />
-		<input type="button" id="previous" onclick="previousPage()" value="previous" />
-		<input type="button" id="last" onclick="lastPage()" value="last">	
+		%>
+		<div id= "list" style="margin-top: 35px">
+		<script type="text/javascript">cargarListaP()</script>
+
+		<button class="button" id="first" onclick="firstPage()" >Primero</button>
+		<button class="button" id="previous" onclick="previousPage()" >Anterior</button>
+		<button class="button" id="next" onclick="nextPage()"  >Siguiente</button>
+		<button class="button" id="last" onclick="lastPage()" >Último</button>
+		</div>
 	</body>
 </html>

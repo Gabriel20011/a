@@ -70,7 +70,7 @@ public class Usuario {
 
 	public String toString() {
 		String res = "";
-		res = nombre.toUpperCase()+ " "+ apellido.toUpperCase()+" "+edad+" "+genero+" "+pais.toUpperCase()+" "+ciudad.toUpperCase();
+		res = nombre.toUpperCase()+ ";"+ apellido.toUpperCase()+";"+edad+";"+genero+";"+pais.toUpperCase()+";"+ciudad.toUpperCase();
 		return res;
 	}
 	
