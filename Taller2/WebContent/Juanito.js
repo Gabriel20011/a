@@ -13,25 +13,31 @@ function loadList(arr) {
 	}
 }
 function drawList(arr) {
-			var body = document.getElementsByTagName("body")[0];
-			var tabla   = document.createElement("table");
-			var tblBody = document.createElement("tbody");
-			for (var i = 0; i < arr.length; i++) {
-			    var hilera = document.createElement("tr");
-			 
-			    for (var j = 0; j < 6; j++) {
-			      var celda = document.createElement("td");
-			      var textoCelda = document.createTextNode( arr[i].split(";")[j]);
-			      celda.appendChild(textoCelda);
-			      hilera.appendChild(celda);
-			    }
-			    tblBody.appendChild(hilera);
-			  }
-			 
-			  tabla.appendChild(tblBody);
-			  body.appendChild(tabla);
-			  tabla.setAttribute("border", "2");
+	var body = document.getElementsByTagName("body")[0];
+	var tabla   = document.createElement("table");
+	var tblBody = document.createElement("tbody");
+	for (let i = 0; i < arr.length; i++) {
+		var hilera = document.createElement("tr");
 
+		for (let j = 0; j < 6; j++) {
+			var celda = document.createElement("td");
+			var textoCelda = document.createTextNode(arr[i].split(";")[j]);
+			celda.appendChild(textoCelda);
+			hilera.appendChild(celda);
+		}
+		tblBody.appendChild(hilera);
+	}
+
+	tabla.appendChild(tblBody);
+	body.appendChild(tabla);
+	tabla.setAttribute("border", "2");
+	$( "#here" ).load(window.location.href + " #here" );
+
+}
+
+function cargarNPagina(){
+
+	document.getElementById("nPagina").innerHTML = "Pagina: " + currentPage + " de: " + numberOfPages
 }
 
 function cargarListaP(){
