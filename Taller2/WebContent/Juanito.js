@@ -43,27 +43,45 @@ function cargarListaP(){
 	let inicio = (currentPage - 1) * 50
 	let fin = currentPage * 50
 	var supp1 = []
-	for (inicio ; inicio < fin ; inicio ++){
-		supp1.push(list[inicio])
+	if (list.length < 50){
+		for (inicio ; inicio < list.length ; inicio ++){
+			supp1.push(list[inicio])
+		}
+	}
+	else{
+		if (list.length < fin){
+			for (inicio ; inicio < list.length; inicio ++){
+				supp1.push(list[inicio])
+			}
+		}
+		else{
+			for (inicio ; inicio < fin ; inicio ++){
+				supp1.push(list[inicio])
+			}
+		}
 	}
 	drawList(supp1)
 }
 function firstPage(){
 	currentPage = 1;
 	cargarListaP();
+	cargarNPagina()
 }
 function lastPage() {
-	currentPage = numberOfPages-1;
+	currentPage = numberOfPages;
 	cargarListaP();
+	cargarNPagina()
 }
 
 function previousPage() {
 	if (currentPage > 1)
 		currentPage -= 1;
 	cargarListaP();
+	cargarNPagina()
 }
 function nextPage() {
 	if (currentPage < numberOfPages)
 		currentPage += 1;
 	cargarListaP();
+	cargarNPagina()
 }
