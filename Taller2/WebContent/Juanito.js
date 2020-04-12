@@ -4,7 +4,6 @@ var currentPage = 1;
 var numberPerPage = 50;
 var numberOfPages = 1;
 var contador = 0;
-
 function loadList(arr) {
 	list.push(arr)
 	contador++
@@ -38,52 +37,33 @@ function drawList(arr) {
 function cargarNPagina(){
 
 	document.getElementById("nPagina").innerHTML = "Pagina: " + currentPage + " de: " + numberOfPages
-
 }
 
 function cargarListaP(){
 	let inicio = (currentPage - 1) * 50
 	let fin = currentPage * 50
 	var supp1 = []
-	if (list.length > 50){
-		if (fin > list.length){
-			for (inicio ; inicio < list.length ; inicio ++){
-				supp1.push(list[inicio])
-			}
-		}
-		else{
-			for (inicio ; inicio < fin ; inicio ++){
-				supp1.push(list[inicio])
-			}
-		}
-	}
-	else{
-		for (inicio ; inicio < list.length ; inicio ++){
-			supp1.push(list[inicio])
-		}
+	for (inicio ; inicio < fin ; inicio ++){
+		supp1.push(list[inicio])
 	}
 	drawList(supp1)
 }
 function firstPage(){
 	currentPage = 1;
-	cargarListaP()
-	cargarNPagina()
+	cargarListaP();
 }
 function lastPage() {
-	currentPage = numberOfPages;
+	currentPage = numberOfPages-1;
 	cargarListaP();
-	cargarNPagina()
 }
 
 function previousPage() {
 	if (currentPage > 1)
 		currentPage -= 1;
 	cargarListaP();
-	cargarNPagina()
 }
 function nextPage() {
 	if (currentPage < numberOfPages)
 		currentPage += 1;
 	cargarListaP();
-	cargarNPagina()
 }
