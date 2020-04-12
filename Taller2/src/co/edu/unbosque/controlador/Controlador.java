@@ -59,7 +59,7 @@ public class Controlador extends HttpServlet {
 
 	}
 
-	/** uwy
+	/** 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
