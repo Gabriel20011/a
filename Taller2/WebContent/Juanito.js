@@ -32,6 +32,7 @@ function drawList(arr) {
 	tabla.appendChild(tblBody);
 	body.appendChild(tabla);
 	tabla.setAttribute("border", "2");
+	$( "#here" ).load(window.location.href + " #here" );
 
 }
 
