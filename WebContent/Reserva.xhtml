@@ -21,14 +21,13 @@
                <td><h4>Selecciona los temas:</h4></td>
             </tr>
            <tr><td>
-               <h:selectManyCheckbox >
-               <f:selectItem itemValue = "1" itemLabel = "Tema 1" /> 
-               <f:selectItem itemValue = "2" itemLabel = "Tema 2" /> 
-               <f:selectItem itemValue = "3" itemLabel = "Tema 3" /> 
-               <f:selectItem itemValue = "4" itemLabel = "Tema 4" /> 
-               <f:selectItem itemValue = "5" itemLabel = "Tema 5" /> 
-               <f:selectItem itemValue = "6" itemLabel = "Tema 6" /> 
-               </h:selectManyCheckbox >
+           
+               <ui:repeat value="#{biblioteca.libros}" var = "libro">
+              <h:selectManyCheckbox >
+               <f:selectItem itemLabel="#{libro.tema}" />
+              </h:selectManyCheckbox>
+               
+               </ui:repeat >
                </td>
             </tr> 
 		<tr><td>
@@ -38,14 +37,13 @@
          <td><h3>Lista de libros</h3></td>
          </tr>
          <tr><td>
-         <h:selectManyListbox value = "#{biblioteca.libros}"> 
-		   <f:selectItem itemValue = "1" itemLabel = "Título del Libro 1 " /> 
-		   <f:selectItem itemValue = "2" itemLabel = "Título del Libro 2" /> 
+         <h:selectManyListbox value = "#{biblioteca.libros}" var = "libro"> 
+		   <f:selectItem itemValue = "1" itemLabel = "#{libro.titulo}" /> 
 		</h:selectManyListbox>
 		</td></tr>
         <tr>
         <td>
-		<h:commandButton value="Reservar"></h:commandButton>
+		<h:commandButton value="Reservar" onclick= "alert('Libros reservados')"></h:commandButton>
         <h:commandButton value="Volver" action= "Principal"/>
         </td>
 		</tr>

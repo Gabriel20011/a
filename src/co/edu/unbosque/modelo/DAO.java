@@ -39,15 +39,16 @@ public class DAO {
 	    	ps.setString(5, x.getContraseña());
 	      	ps.setInt(6,x.getNumlibros() );
 	    	ps.executeUpdate();  
-	    	System.out.println("Se insertaron los valores UwU");
+	    	System.out.println("Se insertaron los valores");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
     }
     
     public ArrayList<ClienteBean> getCliente() {
-		return null;
+    	ArrayList<ClienteBean> clientes = null;
     	
+    	return clientes;
     }
     public ArrayList<Libro> getLibros() {
 		ArrayList<Libro> lista = new ArrayList<Libro>();
