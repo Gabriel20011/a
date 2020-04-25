@@ -18,6 +18,11 @@ public class Main {
 		x.setContraseña("XXX");
 		x.setNumlibros(x.getReservas().size());
 		d.guardar(x);
+		for (int i = 0; i < d.getLibros().size(); i++) {
+			System.out.println(d.getLibros().get(i).getTitulo());
+		}
+		
+		
 	}
 
 }

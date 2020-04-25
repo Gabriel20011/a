@@ -19,24 +19,24 @@
          <h:dataTable value="#{clienteBean.reservas}" var="reservas" border="2"
 			cellspacing="1" cellpadding="1">
 			<h:column>
-				<h:facet name="header">Name</h:facet>
+				<f:facet name="header">Título</f:facet>
                     #{libros.titulo}
                 </h:column>
 			<h:column>
-				<h:facet name="header">Model Number</h:facet>
+				<f:facet name="header">Tema</f:facet>
                     #{libros.tema}
                 </h:column>
 			<h:column>
-				<h:facet name="header">Color</h:facet>
+				<f:facet name="header">Fecha de Reserva</f:facet>
                     #{libros.reserva}
                 </h:column>
 			<h:column>
-				<h:facet name="header">Quantity</h:facet>
+				<f:facet name="header">Fecha de Devolución</f:facet>
                     #{libros.devolucion}
                 </h:column>
 			
 		</h:dataTable>
-        <p><h:commandButton value="Volver"/></p>
+        <p><h:commandButton value="Volver" action="Principal"/></p>
         <a href="https://www.unbosque.edu.co/" title="Unbosque">
 		<img src="C:\Users\juand\eclipse-workspace\Proyect\data\ubosque.png" width="300" height="200" />
 		</a>

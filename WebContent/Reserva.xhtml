@@ -38,7 +38,7 @@
          <td><h3>Lista de libros</h3></td>
          </tr>
          <tr><td>
-         <h:selectManyListbox value = "#{userData.data}"> 
+         <h:selectManyListbox value = "#{biblioteca.libros}"> 
 		   <f:selectItem itemValue = "1" itemLabel = "Título del Libro 1 " /> 
 		   <f:selectItem itemValue = "2" itemLabel = "Título del Libro 2" /> 
 		</h:selectManyListbox>
@@ -46,7 +46,7 @@
         <tr>
         <td>
 		<h:commandButton value="Reservar"></h:commandButton>
-        <h:commandButton value="Volver"/>
+        <h:commandButton value="Volver" action= "Principal"/>
         </td>
 		</tr>
 		</table>

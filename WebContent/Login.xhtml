@@ -19,19 +19,20 @@
          <table>
             <tr>
                <td>Usuario:</td>
-               <td><h:inputText value="#{richBean.name}"/></td>
+               <td><h:inputText value="#{clienteBean.nombre}"/></td>
             </tr>
             <tr>
                <td>Contraseña:</td>
                <td>
-               <h:inputSecret value="#{richBean.name}"/>
+               <h:inputSecret value="#{clienteBean.contraseña}"/>
                <h:button value="Ver"><img src= "C:\Users\juand\eclipse-workspace\Proyect\data/ojo.gif" width="20" height="20"></img></h:button>
                </td>
             </tr>
             <tr>
                <td>
-            <p><h:commandButton value="Entrar"/></p>
+           	<h:commandButton value="Entrar" action="Principal"/>
              </td>
+             <td> <h:commandButton value="Registrar"/></td>
             </tr>
         </table>
         

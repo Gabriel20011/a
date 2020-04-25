@@ -3,10 +3,13 @@ package co.edu.unbosque.modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DAO {
+	
 	static Connection conexion=null;
     static Statement sentencia;
     public void conectar(){
@@ -17,11 +20,14 @@ public class DAO {
         	Class.forName("com.mysql.cj.jdbc.Driver");
         	conexion = DriverManager.getConnection(ruta,User,password);
             System.out.println("Conectado");
+            sentencia= conexion.createStatement();
+            
         } catch (Exception e) {
         	e.printStackTrace();
             System.out.println("No conectado");
         }
     }
+    
     public void guardar(ClienteBean x){
     	PreparedStatement ps;
 		try {
@@ -35,15 +41,27 @@ public class DAO {
 	    	ps.executeUpdate();  
 	    	System.out.println("Se insertaron los valores UwU");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	 
-    
     }
     
-  
-    
-  
+    public ArrayList<ClienteBean> getCliente() {
+		return null;
+    	
+    }
+    public ArrayList<Libro> getLibros() {
+		ArrayList<Libro> lista = new ArrayList<Libro>();
+		String q = "SELECT * FROM tablalibros";
+		ResultSet  resultado;
+        try {
+            resultado = sentencia.executeQuery(q);
+            while(resultado.next()){
+                lista.add(new Libro(resultado.getString("TITULO"), resultado.getString("TEMA")));
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lista;
+	}
 }

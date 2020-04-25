@@ -11,8 +11,9 @@ public class ClienteBean {
 	
 	String nombre,apellido,documento,usuario,contraseña;
 	int numlibros;
-	ArrayList<Reserva> reservas  = new ArrayList<Reserva>();;
-
+	ArrayList<Reserva> reservas  = new ArrayList<Reserva>();
+	ArrayList<ClienteBean> listaClientes;
+	HttpSession session;
 	public ClienteBean() {
 		
 	}
@@ -60,10 +61,12 @@ public class ClienteBean {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
+
+
+
 public String doGuardar() {
 	FacesContext context = FacesContext.getCurrentInstance();
-	HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-	ArrayList<ClienteBean> listaClientes;
+	session = (HttpSession) context.getExternalContext().getSession(true);
 	listaClientes= (ArrayList<ClienteBean>) session.getAttribute("listaClientes");
 	if (listaClientes == null) {
 		listaClientes= new ArrayList<ClienteBean>();
@@ -73,4 +76,5 @@ public String doGuardar() {
 	listaClientes.add(this);
 	return null;
 }
+
 }
