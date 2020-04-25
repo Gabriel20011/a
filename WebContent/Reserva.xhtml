@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:a4j="http://richfaces.org/a4j">
+ 
+<h:head>
+   <title>Reserva</title>
+   <meta http-equiv="content-type" content="text/xhtml; charset=UTF-8" />
+
+      <title>Reserva</title>
+   </h:head>
+   <h:body>
+ 		
+      <h:form>
+         <h1>RESERVA TUS LIBROS</h1>
+         <table>
+            <tr>
+               <td><h4>Selecciona los temas:</h4></td>
+            </tr>
+           <tr><td>
+               <h:selectManyCheckbox >
+               <f:selectItem itemValue = "1" itemLabel = "Tema 1" /> 
+               <f:selectItem itemValue = "2" itemLabel = "Tema 2" /> 
+               <f:selectItem itemValue = "3" itemLabel = "Tema 3" /> 
+               <f:selectItem itemValue = "4" itemLabel = "Tema 4" /> 
+               <f:selectItem itemValue = "5" itemLabel = "Tema 5" /> 
+               <f:selectItem itemValue = "6" itemLabel = "Tema 6" /> 
+               </h:selectManyCheckbox >
+               </td>
+            </tr> 
+		<tr><td>
+         <h:button value="Buscar"></h:button>
+         </td></tr>
+         <tr>
+         <td><h3>Lista de libros</h3></td>
+         </tr>
+         <tr><td>
+         <h:selectManyListbox value = "#{userData.data}"> 
+		   <f:selectItem itemValue = "1" itemLabel = "Título del Libro 1 " /> 
+		   <f:selectItem itemValue = "2" itemLabel = "Título del Libro 2" /> 
+		</h:selectManyListbox>
+		</td></tr>
+        <tr>
+        <td>
+		<h:commandButton value="Reservar"></h:commandButton>
+        <h:commandButton value="Volver"/>
+        </td>
+		</tr>
+		</table>
+		 <a href="https://www.unbosque.edu.co/" title="Unbosque">
+		<img src="C:\Users\juand\eclipse-workspace\Proyect\data\ubosque.png" width="300" height="200" />
+		</a>
+      </h:form>
+   </h:body>
+</html>
