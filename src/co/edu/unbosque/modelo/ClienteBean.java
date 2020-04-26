@@ -1,5 +1,6 @@
 package co.edu.unbosque.modelo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -8,16 +9,35 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean
 public class ClienteBean {
-	
-	String nombre,apellido,documento,usuario,contraseña;
+
+	String nombre,apellido,documento,usuario,contraseña, reContraseña;
+
 	int numlibros;
-	ArrayList<Reserva> reservas  = new ArrayList<Reserva>();
+	ArrayList<Reserva> reservas;
 	ArrayList<ClienteBean> listaClientes;
-	HttpSession session;
+
 	public ClienteBean() {
-		
+
 	}
-	
+
+	public ClienteBean(String nombre, String apellido, String documento, String usuario, String contraseña) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.documento = documento;
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		reservas  = new ArrayList<Reserva>();
+		this.numlibros = 0;
+
+	}
+
+	public String getReContraseña() {
+		return reContraseña;
+	}
+
+	public void setReContraseña(String reContraseña) {
+		this.reContraseña = reContraseña;
+	}
 	public ArrayList<Reserva> getReservas() {
 		return reservas;
 	}
@@ -64,17 +84,30 @@ public class ClienteBean {
 
 
 
-public String doGuardar() {
-	FacesContext context = FacesContext.getCurrentInstance();
-	session = (HttpSession) context.getExternalContext().getSession(true);
-	listaClientes= (ArrayList<ClienteBean>) session.getAttribute("listaClientes");
-	if (listaClientes == null) {
-		listaClientes= new ArrayList<ClienteBean>();
-		session.setAttribute("listaClientes",listaClientes);
-		
+	@Override
+	public String toString() {
+		return "ClienteBean [nombre=" + nombre + ", apellido=" + apellido + ", documento=" + documento + ", usuario="
+				+ usuario + ", contraseña=" + contraseña + "]";
 	}
-	listaClientes.add(this);
-	return null;
-}
+
+	public String doGuardar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+		listaClientes= (ArrayList<ClienteBean>) session.getAttribute("listaClientes");
+		if (listaClientes == null) {
+			listaClientes= new ArrayList<ClienteBean>();
+			session.setAttribute("listaClientes",listaClientes);
+
+		}
+		System.out.println(contraseña.isEmpty());
+		if (contraseña.equals(reContraseña)) {
+			listaClientes.add(this);
+			DAO.guardar(this);
+			return "Login";
+
+		}
+		return null;
+
+	}
 
 }

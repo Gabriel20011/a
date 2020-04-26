@@ -28,9 +28,14 @@ public class DAO {
         }
     }
     
-    public void guardar(ClienteBean x){
+    public static void guardar(ClienteBean x){
     	PreparedStatement ps;
+    	String ruta="jdbc:mysql://remotemysql.com:3306/EuXwn9Coxe";
+		String User="EuXwn9Coxe";
+		String password="kxL3kNcQTN";
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+        	conexion = DriverManager.getConnection(ruta,User,password);
 			ps = conexion.prepareStatement("INSERT INTO tabla VALUES (?, ? ,? ,? , ?,?)");
 			ps.setString(1, x.getNombre());
 	    	ps.setString(2, x.getApellido());
@@ -40,7 +45,7 @@ public class DAO {
 	      	ps.setInt(6,x.getNumlibros() );
 	    	ps.executeUpdate();  
 	    	System.out.println("Se insertaron los valores");
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
     }
