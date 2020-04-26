@@ -25,6 +25,14 @@ public class Biblioteca {
 			}
 		}
 	}
+	
+	public ArrayList<Libro> filtro(){
+		ArrayList<Libro> filtro = new ArrayList<Libro> ();
+		for (int i = 0; i < temas.size(); i++) {
+			
+		}
+		return filtro;
+	}
 
 	public DAO getDao() {
 		return dao;
