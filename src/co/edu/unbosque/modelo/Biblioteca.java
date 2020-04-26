@@ -8,8 +8,8 @@ import javax.faces.bean.ManagedBean;
 public class Biblioteca {
 	DAO dao = new DAO();
 	ArrayList<Libro> libros;
+	ArrayList<Libro> filtro;
 	ArrayList<String> temas = new ArrayList<String>();
-	String[] filtro = new String[libros.size()];
 	public Biblioteca() {
 		dao.conectar();
 		libros  =  dao.getLibros();
@@ -27,12 +27,12 @@ public class Biblioteca {
 		}
 	}
 	
-	public String[] filtro(){
-		
+	public ArrayList<Libro> filtro(){
+		filtro = new ArrayList<Libro> ();
 		for (int i = 0; i < temas.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
 				if(libros.get(j).getTema().equals(temas.get(i))) {
-					filtro[j] = libros.get(i).getTitulo();
+					filtro.add(libros.get(j));
 				}
 			}
 		}
@@ -61,6 +61,14 @@ public class Biblioteca {
 
 	public void setLibros(ArrayList<Libro> libros) {
 		this.libros = libros;
+	}
+
+	public ArrayList<Libro> getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(ArrayList<Libro> filtro) {
+		this.filtro = filtro;
 	}
 	
 }
