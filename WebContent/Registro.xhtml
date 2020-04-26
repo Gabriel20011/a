@@ -13,12 +13,12 @@
    <h:body>
       <h:form> 
          <h3>Registrate</h3>
-         Nombres: <h:inputText id= "nombre" value= "#{clienteBean.nombre}"></h:inputText><br></br>
-         Apellidos: <h:inputText id= "nombre" value= "#{clienteBean.apellido}"></h:inputText><br></br>
-         Documento de identidad: <h:inputText id= "nombre" value= "#{clienteBean.documento}"></h:inputText><br></br>
-         Usuario: <h:inputText id= "nombre" value= "#{clienteBean.ususario}"></h:inputText><br></br>
-         Contraseña: <h:inputText id= "nombre" value= "#{clienteBean.contraseña}"></h:inputText><br></br>
-         verifica la contraseña: <h:inputText id= "nombre" value= "#{clienteBean.nombre}"></h:inputText><br></br>
+         Nombres: <h:inputText id= "nombre" value= "#{clienteBean.nombre}" required="true"></h:inputText><br></br>
+         Apellidos: <h:inputText id= "apellido" value= "#{clienteBean.apellido}"></h:inputText><br></br>
+         Documento de identidad: <h:inputText id= "CC" value= "#{clienteBean.documento}"></h:inputText><br></br>
+         Usuario: <h:inputText id= "usuario" value= "#{clienteBean.usuario}"></h:inputText><br></br>
+         Contraseña: <h:inputText id= "contraseña" value= "#{clienteBean.contraseña}"></h:inputText><br></br>
+         verifica la contraseña: <h:inputText id= "Rcontraseña" value= "#{clienteBean.nombre}"></h:inputText><br></br>
          <p><h:commandButton value="Registrate" action="Login"/></p>
       </h:form>
    </h:body>
