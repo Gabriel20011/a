@@ -18,26 +18,28 @@
          <h1>RESERVA TUS LIBROS</h1>
          <table>
             <tr>
-               <td><h4>Selecciona los temas:</h4></td>
+               <td><h3>Selecciona los temas:</h3></td>
             </tr>
            <tr><td>
-               <ui:repeat value="#{biblioteca.temas}" var = "libro">
-              <h:selectManyCheckbox value="#{biblioteca.temas}"  var = "libro">
-               <f:selectItem itemLabel="#{libro}" />
+               <ui:repeat value="#{biblioteca.temas}" var = "tema">
+              <h:selectManyCheckbox value="#{biblioteca.temas}"  var = "tema">
+               <f:selectItem itemLabel="#{tema}" />
               </h:selectManyCheckbox>
                </ui:repeat >
                </td>
             </tr> 
 		<tr><td>
-         <h:button value="Buscar"></h:button>
+         <h:button value="Buscar" action= "biblioteca.filtro()"></h:button>
          </td></tr>
          <tr>
          <td><h3>Lista de libros</h3></td>
          </tr>
          <tr><td>
-         <h:selectManyListbox value = "#{biblioteca.filtro()}" var = "libro"> 
-		   <f:selectItem itemValue = "1" itemLabel = "#{libro.titulo}" /> 
+          <ui:repeat value="#{biblioteca.filtro}" var = "filtro">
+         <h:selectManyListbox value = "#{biblioteca.filtro}" var = "filtro"> 
+		   <f:selectItem itemValue = "1" itemLabel = "#{filtro.titulo}" /><br/>
 		</h:selectManyListbox>
+		 </ui:repeat>
 		</td></tr>
         <tr>
         <td>

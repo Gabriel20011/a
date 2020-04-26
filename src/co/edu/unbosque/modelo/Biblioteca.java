@@ -10,6 +10,7 @@ public class Biblioteca {
 	
 	DAO dao = new DAO();
 	ArrayList<Libro> libros;
+	ArrayList<Libro> filtro;
 	ArrayList<String> temas = new ArrayList<String>();
 	public Biblioteca() {
 		dao.conectar();
@@ -29,9 +30,13 @@ public class Biblioteca {
 	}
 	
 	public ArrayList<Libro> filtro(){
-		ArrayList<Libro> filtro = new ArrayList<Libro> ();
+		filtro = new ArrayList<Libro> ();
 		for (int i = 0; i < temas.size(); i++) {
-			
+			for (int j = 0; j < libros.size(); j++) {
+				if(libros.get(j).getTema().equals(temas.get(i))) {
+					filtro.add(libros.get(j));
+				}
+			}
 		}
 		return filtro;
 	}
@@ -58,6 +63,14 @@ public class Biblioteca {
 
 	public void setLibros(ArrayList<Libro> libros) {
 		this.libros = libros;
+	}
+
+	public ArrayList<Libro> getFiltro() {
+		return filtro;
+	}
+
+	public void setFiltro(ArrayList<Libro> filtro) {
+		this.filtro = filtro;
 	}
 	
 }
