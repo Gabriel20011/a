@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 
+
 @ManagedBean
 public class Biblioteca {
+	
 	DAO dao = new DAO();
 	ArrayList<Libro> libros;
 	ArrayList<Libro> filtro;
