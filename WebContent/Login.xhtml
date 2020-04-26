@@ -18,7 +18,7 @@
          <table>
             <tr>
                <td>Usuario:</td>
-               <td><h:inputText value="#{clienteBean.nombre}"/></td>
+               <td><h:inputText value="#{clienteBean.usuario}"/></td>
             </tr>
             <tr>
                <td>Contraseña:</td>
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                <td>
-           	<h:commandButton value="Entrar" action="Principal"/>
+           	<h:commandButton value="Entrar" action="#{clienteBean.doLogin}"/>
              </td>
              <td> <h:commandButton value="Registrarse" action="Registro"/></td>
             </tr>
