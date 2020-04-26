@@ -12,7 +12,7 @@ public class Main {
 		d.conectar();
 		ClienteBean x = new ClienteBean();
 		x.setNombre("Gabo");
-		x.setApellido("Venequeishon");
+		x.setApellido("Ortega");
 		x.setDocumento("1231231233");
 		x.setUsuario("sofiaLover23");
 		x.setContraseña("XXX");
