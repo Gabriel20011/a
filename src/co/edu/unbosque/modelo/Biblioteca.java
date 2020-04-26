@@ -9,6 +9,7 @@ public class Biblioteca {
 	DAO dao = new DAO();
 	ArrayList<Libro> libros;
 	ArrayList<String> temas = new ArrayList<String>();
+	String[] filtro = new String[libros.size()];
 	public Biblioteca() {
 		dao.conectar();
 		libros  =  dao.getLibros();
@@ -26,10 +27,14 @@ public class Biblioteca {
 		}
 	}
 	
-	public ArrayList<Libro> filtro(){
-		ArrayList<Libro> filtro = new ArrayList<Libro> ();
+	public String[] filtro(){
+		
 		for (int i = 0; i < temas.size(); i++) {
-			
+			for (int j = 0; j < libros.size(); j++) {
+				if(libros.get(j).getTema().equals(temas.get(i))) {
+					filtro[j] = libros.get(i).getTitulo();
+				}
+			}
 		}
 		return filtro;
 	}
