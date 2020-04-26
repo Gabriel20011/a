@@ -14,6 +14,7 @@ public class Biblioteca {
 		dao.conectar();
 		libros  =  dao.getLibros();
 		temas();
+		filtro();
 	}
 
 	public void  temas(){
