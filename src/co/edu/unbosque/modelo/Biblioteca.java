@@ -32,10 +32,12 @@ public class Biblioteca {
 	
 	public ArrayList<Libro> filtro(){
 		filtro = new ArrayList<Libro> ();
+		System.out.println(temas.size());
 		for (int i = 0; i < temas.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
 				if(libros.get(j).getTema().equals(temas.get(i))) {
 					filtro.add(libros.get(j));
+					
 				}
 			}
 		}

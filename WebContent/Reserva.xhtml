@@ -22,14 +22,14 @@
             </tr>
            <tr><td>
                <ui:repeat value="#{biblioteca.temas}" var = "tema">
-              <h:selectManyCheckbox value="#{biblioteca.temas}"  >
+              <h:selectManyCheckbox value="#{biblioteca.temas}">
                <f:selectItem itemLabel="#{tema}" />
               </h:selectManyCheckbox>
                </ui:repeat >
                </td>
             </tr> 
 		<tr><td>
-         <h:button value="Buscar" action= "#{biblioteca.filtro()}"></h:button>
+         <h:button value="Buscar" action= "#{Reserva}"></h:button>
          </td></tr>
          <tr>
          <td><h3>Lista de libros</h3></td>
