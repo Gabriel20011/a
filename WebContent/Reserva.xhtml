@@ -21,12 +21,10 @@
                <td><h4>Selecciona los temas:</h4></td>
             </tr>
            <tr><td>
-           
-               <ui:repeat value="#{biblioteca.libros}" var = "libro">
+               <ui:repeat value="#{biblioteca.temas}" var = "libro">
               <h:selectManyCheckbox >
-               <f:selectItem itemLabel="#{libro.tema}" />
+               <f:selectItem itemLabel="#{libro}" />
               </h:selectManyCheckbox>
-               
                </ui:repeat >
                </td>
             </tr> 
@@ -49,7 +47,7 @@
 		</tr>
 		</table>
 		 <a href="https://www.unbosque.edu.co/" title="Unbosque">
-		<img src="C:\Users\juand\eclipse-workspace\Proyect\data\ubosque.png" width="300" height="200" />
+		<img src="data/ubosque.png" width="300" height="200" />
 		</a>
       </h:form>
    </h:body>

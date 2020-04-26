@@ -50,6 +50,7 @@ public class DAO {
     	
     	return clientes;
     }
+    
     public ArrayList<Libro> getLibros() {
 		ArrayList<Libro> lista = new ArrayList<Libro>();
 		String q = "SELECT * FROM tablalibros";

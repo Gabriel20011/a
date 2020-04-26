@@ -17,14 +17,11 @@ public class Biblioteca {
 
 	public void  temas(){
 		String tema = "";
-
-		for (int i = 0; i < libros.size(); i++) {
+		for (int i = 0; i < libros.size() - 1; i++) {
 			tema = libros.get(i).getTema();
-			System.out.println(tema);
-			for (int j = 0; j < temas.size(); j++) {
-				if (tema.equals(temas.get(j))) {
-					temas.add(tema);
-				}
+			
+			if (!tema.equals(libros.get(i+1).getTema())) {
+				temas.add(tema);
 			}
 		}
 	}
