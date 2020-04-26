@@ -28,6 +28,7 @@ public class DAO {
         }
     }
     
+    
     public static void guardar(ClienteBean x){
     	PreparedStatement ps;
     	String ruta="jdbc:mysql://remotemysql.com:3306/EuXwn9Coxe";
@@ -43,6 +44,23 @@ public class DAO {
 	    	ps.setString(4, x.getUsuario());
 	    	ps.setString(5, x.getContraseña());
 	      	ps.setInt(6,x.getNumlibros() );
+	    	ps.executeUpdate();  
+	    	System.out.println("Se insertaron los valores");
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    }
+    public static void guardarlibro(Libro x){
+    	PreparedStatement ps;
+    	String ruta="jdbc:mysql://remotemysql.com:3306/EuXwn9Coxe";
+		String User="EuXwn9Coxe";
+		String password="kxL3kNcQTN";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+        	conexion = DriverManager.getConnection(ruta,User,password);
+			ps = conexion.prepareStatement("INSERT INTO tablalibros VALUES (?, ? )");
+			ps.setString(1, x.getTitulo() );
+			ps.setString(2, x.getTema());
 	    	ps.executeUpdate();  
 	    	System.out.println("Se insertaron los valores");
 		} catch (SQLException | ClassNotFoundException e) {
