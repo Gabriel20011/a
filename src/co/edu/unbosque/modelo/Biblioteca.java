@@ -9,12 +9,10 @@ import javax.faces.bean.ManagedBean;
 public class Biblioteca {
 	
 	DAO dao = new DAO();
-	ArrayList<Libro> libros;
+	static ArrayList<Libro> libros = DAO.getLibros();
 	ArrayList<Libro> filtro;
 	ArrayList<String> temas = new ArrayList<String>();
 	public Biblioteca() {
-		dao.conectar();
-		libros  =  dao.getLibros();
 		temas();
 	}
 
@@ -30,6 +28,9 @@ public class Biblioteca {
 	}
 	
 	public ArrayList<Libro> filtro(){
+		for (String i : temas) {
+			System.out.println(i + "Papu");
+		}
 		filtro = new ArrayList<Libro> ();
 		for (int i = 0; i < temas.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
