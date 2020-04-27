@@ -129,21 +129,7 @@ public class ClienteBean implements Serializable{
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 		listaClientes= (ArrayList<ClienteBean>) session.getAttribute("listaClientes");
-		if (nombre == null) {
-			usuario = "Digite este campo";
-		}
-		if (contraseña == null) {
-			contraseña = "Digite este campo";
-		}
-		if (apellido == null) {
-			apellido = "Digite este campo";
-		}
-		if (documento.contains("[a-zA-Z]+") || documento.length() < 9) {
-			documento = "Digite este documento correctamente";
-		}
-		if (usuario == null) {
-			usuario = "Digite este campo";
-		}
+		
 		if (listaClientes == null) {
 			listaClientes= new ArrayList<ClienteBean>();
 			session.setAttribute("listaClientes",listaClientes);
