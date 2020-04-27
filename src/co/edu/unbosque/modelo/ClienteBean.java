@@ -130,32 +130,30 @@ public class ClienteBean implements Serializable{
 		if (listaClientes == null) {
 			listaClientes= new ArrayList<ClienteBean>();
 			session.setAttribute("listaClientes",listaClientes);
-
 		}
 		if (contraseña.equals(reContraseña)) {
 			listaClientes.add(this);
 			DAO.guardar(this);
 			return "Login";
-
 		}
 		return null;
 
 	}
 	public String doLogin() {
-		ClienteBean sofia = null;
+		ClienteBean cliente = null;
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 		for (ClienteBean i : listaClientes) {
 			if (i.getUsuario().equals(usuario) && i.getContraseña().equals(contraseña)) {
-				sofia = i;
+				cliente = i;
 			}
 		}
-		if (sofia == null) {
+		if (cliente == null) {
 			usuario = "Clave o Usuario incorrecta";
 			return "Login";
 		}
 		else {
-			usuario = sofia.getNombre();
+			usuario = cliente.getNombre();
 			return "Principal";
 		}
 	}
