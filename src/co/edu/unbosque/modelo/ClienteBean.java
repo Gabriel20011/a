@@ -89,6 +89,7 @@ public class ClienteBean implements Serializable{
 			}
 		}
 	}
+	
 	public Libro buscarLibro(int nReserva) {
 		for (Libro i : libros) {
 			if (i.getnLibro() == nReserva) {
