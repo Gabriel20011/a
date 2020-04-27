@@ -12,10 +12,14 @@
    <h:body>
       <h:form> 
          <h3>Registrate</h3>
-         Nombres: <h:inputText id= "nombre" value= "#{clienteBean.nombre}"  ><f:validateRequired /></h:inputText><br></br>
-         Apellidos: <h:inputText id= "apellido" value= "#{clienteBean.apellido}"></h:inputText><br></br>
-         Documento de identidad: <h:inputText id= "CC" value= "#{clienteBean.documento}"></h:inputText><br></br>
-         Usuario: <h:inputText id= "usuario" value= "#{clienteBean.usuario}"></h:inputText><br></br>
+         Nombres: <h:inputText id= "nombre" value= "#{clienteBean.nombre}" pattern="[a-z]{1,15}"
+        title="Username should only contain lowercase letters. e.g. john"></h:inputText><br></br>
+         Apellidos: <h:inputText id= "apellido" value= "#{clienteBean.apellido}"  pattern="[a-z]{1,15}"
+        title="Username should only contain lowercase letters. e.g. john"></h:inputText><br></br>
+         Documento de identidad: <h:inputText id= "CC" value= "#{clienteBean.documento}"  pattern="[a-z]{1,15}"
+        title="Username should only contain lowercase letters. e.g. john"></h:inputText><br></br>
+         Usuario: <h:inputText id= "usuario" value= "#{clienteBean.usuario}"  pattern="[a-z]{1,15}"
+        title="Username should only contain lowercase letters. e.g. john"></h:inputText><br></br>
          Contraseña: <h:inputText id= "contraseña" value= "#{clienteBean.contraseña}"></h:inputText><br></br>
          verifica la contraseña: <h:inputText id= "Rcontraseña" value= "#{clienteBean.reContraseña}"></h:inputText><br></br>
          <h:commandButton value="Registrate" action="#{clienteBean.doGuardar}"/>

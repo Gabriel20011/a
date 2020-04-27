@@ -1,9 +1,9 @@
 package co.edu.unbosque.modelo;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
@@ -115,9 +115,11 @@ public class ClienteBean implements Serializable{
 			System.out.println(titulos[i]);
 		}
 		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-		Date hoy = new Date();
-		int vencim = hoy.getDay()+3;
-		Date ven = new Date(hoy.getYear(), hoy.getMonth(), vencim);
+		Date hoy = new Date();;
+		Calendar expi = Calendar.getInstance();
+		expi.setTime(hoy);
+		expi.add(Calendar.DAY_OF_YEAR, 3);
+		Date ven = expi.getTime();
 		for (int i = 0; i <titulos.length; i++) {
 			reservas.add(new Reserva(titulos[i], buscarLibro(titulos[i]).getTema(), f.format(hoy), f.format(ven)));
 		}
@@ -127,16 +129,30 @@ public class ClienteBean implements Serializable{
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 		listaClientes= (ArrayList<ClienteBean>) session.getAttribute("listaClientes");
+		if (nombre == null) {
+			usuario = "Digite este campo";
+		}
+		if (contraseña == null) {
+			contraseña = "Digite este campo";
+		}
+		if (apellido == null) {
+			apellido = "Digite este campo";
+		}
+		if (documento.contains("[a-zA-Z]+") || documento.length() < 9) {
+			documento = "Digite este documento correctamente";
+		}
+		if (usuario == null) {
+			usuario = "Digite este campo";
+		}
 		if (listaClientes == null) {
 			listaClientes= new ArrayList<ClienteBean>();
 			session.setAttribute("listaClientes",listaClientes);
 
 		}
-		if (contraseña.equals(reContraseña)) {
+		if (contraseña != null && reContraseña != null && contraseña.equals(reContraseña)) {
 			listaClientes.add(this);
 			DAO.guardar(this);
 			return "Login";
-
 		}
 		return null;
 
