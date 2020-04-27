@@ -1,6 +1,7 @@
 package co.edu.unbosque.modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.faces.bean.ManagedBean;
 
@@ -8,12 +9,14 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 public class Biblioteca {
 	
-	DAO dao = new DAO();
+	
 	static ArrayList<Libro> libros = DAO.getLibros();
+	String[] seleccionados = {};
 	ArrayList<Libro> filtro;
 	ArrayList<String> temas = new ArrayList<String>();
 	public Biblioteca() {
 		temas();
+		filtro();
 	}
 
 	public void  temas(){
@@ -27,10 +30,8 @@ public class Biblioteca {
 		}
 	}
 	
-	public ArrayList<Libro> filtro(){
-		for (String i : temas) {
-			System.out.println(i + "Papu");
-		}
+	public String filtro(){
+		System.out.println(Arrays.toString(seleccionados));
 		filtro = new ArrayList<Libro> ();
 		for (int i = 0; i < temas.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
@@ -39,15 +40,7 @@ public class Biblioteca {
 				}
 			}
 		}
-		return filtro;
-	}
-
-	public DAO getDao() {
-		return dao;
-	}
-
-	public void setDao(DAO dao) {
-		this.dao = dao;
+		return "Reserva";
 	}
 
 	public ArrayList<String> getTemas() {
@@ -58,13 +51,6 @@ public class Biblioteca {
 		this.temas = temas;
 	}
 
-	public ArrayList<Libro> getLibros() {
-		return libros;
-	}
-
-	public void setLibros(ArrayList<Libro> libros) {
-		this.libros = libros;
-	}
 
 	public ArrayList<Libro> getFiltro() {
 		return filtro;
@@ -72,6 +58,13 @@ public class Biblioteca {
 
 	public void setFiltro(ArrayList<Libro> filtro) {
 		this.filtro = filtro;
+	}
+	public String[] getSeleccionados() {
+		return seleccionados;
+	}
+
+	public void setSeleccionados(String[] seleccionados) {
+		this.seleccionados = seleccionados;
 	}
 	
 }

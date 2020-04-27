@@ -21,23 +21,26 @@
                <td><h3>Selecciona los temas:</h3></td>
             </tr>
            <tr><td>
-               <ui:repeat value="#{biblioteca.temas}" var = "tema">
-              <h:selectManyCheckbox value="#{biblioteca.temas}"  var = "tema">
-               <f:selectItem itemLabel="#{tema}" />
-              </h:selectManyCheckbox>
-               </ui:repeat >
+         		<h:selectManyCheckbox value="#{biblioteca.seleccionados}">
+               		<f:selectItem itemValue="Terror" itemLabel="Terror"/>
+               		<f:selectItem itemValue="Ciencia" itemLabel="Ciencia"/>
+               		<f:selectItem itemValue="Literatura colombiana" itemLabel="Literatura Colombiana"/>
+               		<f:selectItem itemValue="Fantasia" itemLabel="Fantasia"/>
+               		<f:selectItem itemValue="Drama" itemLabel="Drama"/>
+               		<f:selectItem itemValue="Historia" itemLabel="Historia"/>
+               	</h:selectManyCheckbox>
                </td>
             </tr> 
-		<tr><td>
-         <h:button value="Buscar" action= "biblioteca.filtro"></h:button>
+		<tr><td>	
+         <h:button value="Buscar" action= "#{biblioteca.filtro}"></h:button>
          </td></tr>
          <tr>
          <td><h3>Lista de libros</h3></td>
          </tr>
          <tr><td>
-          <ui:repeat value="#{biblioteca.filtro}" var = "filtro">
-         <h:selectManyListbox value = "#{biblioteca.filtro}" var = "filtro"> 
-		   <f:selectItem itemValue = "1" itemLabel = "#{filtro.titulo}" /><br/>
+          <ui:repeat value="#{biblioteca.filtro}" var = "fil">
+         <h:selectManyListbox value = "#{biblioteca.filtro}" var = "fil"> 
+		   <f:selectItem itemValue = "1" itemLabel = "#{fil.titulo}" /><br/>
 		</h:selectManyListbox>
 		 </ui:repeat>
 		</td></tr>
