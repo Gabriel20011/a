@@ -42,23 +42,23 @@ public class ClienteBean {
 		this.documento = documento;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
-//		this.reservas = new ArrayList<Reserva>();
-//		this.libros = new ArrayList<Libro>();
-//		if (libros.contains(",")) {
-//			String[] str = libros.split(",");
-//			for (int i = 0 ; i < str.length ; i++) {
-//				this.libros.add(buscarLibro(Integer.parseInt(str[i])));
-//			}
-//		} else if (!libros.equals("0")) {
-//			this.libros.add(buscarLibro(Integer.parseInt(libros)));
-//		}
-//		
-//		this.numlibros = this.libros.size()-1;
+		if (libros.contains(",")) {
+			
+			String[] str = libros.split(",");
+			for (int i = 0 ; i < str.length ; i++) {
+				this.libros.add(buscarLibro(Integer.parseInt(str[i])));
+			}
+		} else if (!libros.equals("0")) {
+			this.libros.add(buscarLibro(Integer.parseInt(libros)));
+		}
+		
+		this.numlibros = this.libros.size()-1;
 	}
 	 
 
 
 	public String filtro(){
+		filtroS = new ArrayList<Libro>();
 		for (int i = 0; i < seleccionados.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
 				if(libros.get(j).getTema().equals(seleccionados.get(i))) {
@@ -69,6 +69,17 @@ public class ClienteBean {
 		return "Reserva";
 	}
 	
+	public String filtro2(){
+		filtroS = new ArrayList<Libro>();
+		for (int i = 0; i < seleccionados.size(); i++) {
+			for (int j = 0; j < libros.size(); j++) {
+				if(libros.get(j).getTitulo().equals(seleccionados.get(i))) {
+					filtroS.add(libros.get(j));
+				}
+			}
+		}
+		return "Reserva";
+	}
 	public void  temas(){
 		String tema = "";
 		for (int i = 0; i < libros.size() - 1; i++) {
@@ -99,7 +110,7 @@ public class ClienteBean {
 	}
 	
 	public void agregarReservas() {
-		filtro();
+		filtro2();
 		System.out.println(filtroS.size());
 		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 		Date hoy = new Date();
