@@ -1,10 +1,5 @@
 package co.edu.unbosque.modelo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-
-@ManagedBean
-@RequestScoped
 public class Reserva {
 	private String titulo, tema, reserva, devolucion;
 

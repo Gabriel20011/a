@@ -31,22 +31,22 @@
                	</h:selectManyCheckbox>
                </td>
             </tr> 
-		<tr><td>	
+		<tr><td>
          <h:button value="Buscar" action= "#{biblioteca.filtro}"></h:button>
          </td></tr>
          <tr>
          <td><h3>Lista de libros</h3></td>
-         </tr>
+         </tr> 
          <tr><td>
           <ui:repeat value="#{biblioteca.filtro}" var = "fil">
-         <h:selectManyListbox value = "#{biblioteca.filtro}" var = "fil"> 
-		   <f:selectItem itemValue = "1" itemLabel = "#{fil.titulo}" /><br/>
+         <h:selectManyListbox value = "#{clienteBean.titulos}"> 
+		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" /><br/>
 		</h:selectManyListbox>
 		 </ui:repeat>
 		</td></tr>
         <tr>
         <td>
-		<h:commandButton value="Reservar" onclick= "alert('Libros reservados')"></h:commandButton>
+		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}" onclick= "alert('Libros reservados')"></h:commandButton>
         <h:commandButton value="Volver" action= "Principal"/>
         </td>
 		</tr>
