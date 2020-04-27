@@ -25,14 +25,13 @@
             <f:selectItem itemValue="Fantasia" itemLabel="Fantasia"/>
          	<f:selectItem itemValue="Drama" itemLabel="Drama"/>
             <f:selectItem itemValue="Historia" itemLabel="Historia"/>
-            	</h:selectManyCheckbox>
+         </h:selectManyCheckbox>
          <h:commandButton value="Buscar" action= "#{clienteBean.filtro}"></h:commandButton>
          <h3>Lista de libros</h3>
-          <ui:repeat value="#{clienteBean.filtroS}" var = "fil">
-         <h:selectManyListbox value = "#{clienteBean.filtroS}">
-		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" />
+         <h:selectManyListbox value = "#{clienteBean.titulos}" var="tit">
+		   <f:selectItems value = "#{clienteBean.filtroS}" var="fil"
+		   				  itemValue="#{fil.titulo}" itemLabel="#{fil.titulo}" />
 		</h:selectManyListbox><br/>
-		 </ui:repeat>
 		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}"/>
 		<h:commandButton value="Historial" action= "Historial"/>
         <h:commandButton value="Volver" action= "Principal"/>

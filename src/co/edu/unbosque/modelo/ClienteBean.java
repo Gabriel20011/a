@@ -1,19 +1,23 @@
 package co.edu.unbosque.modelo;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 @ManagedBean
-public class ClienteBean {
+@SessionScoped
+public class ClienteBean implements Serializable{
 
 	String nombre,apellido,documento,usuario,contraseña, reContraseña;
 	int numlibros;
+	public String[] titulos;
 	ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 	static ArrayList<Libro> libros = DAO.getLibros();
 	static ArrayList<ClienteBean> listaClientes = DAO.getClientes();
@@ -69,17 +73,12 @@ public class ClienteBean {
 		return "Reserva";
 	}
 	
-	public String filtro2(){
-		filtroS = new ArrayList<Libro>();
-		for (int i = 0; i < seleccionados.size(); i++) {
-			for (int j = 0; j < libros.size(); j++) {
-				if(libros.get(j).getTitulo().equals(seleccionados.get(i))) {
-					filtroS.add(libros.get(j));
-				}
-			}
-		}
-		return "Reserva";
+	public String[] obtenerTitulos() {
+		String[] tituls = null;
+		
+		return tituls;
 	}
+
 	public void  temas(){
 		String tema = "";
 		for (int i = 0; i < libros.size() - 1; i++) {
@@ -110,19 +109,15 @@ public class ClienteBean {
 	}
 	
 	public void agregarReservas() {
-		filtro2();
-		System.out.println(filtroS.size());
+		for (int i = 0; i < titulos.length; i++) {
+			System.out.println(titulos[i]);
+		}
 		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 		Date hoy = new Date();
 		int vencim = hoy.getDay()+3;
 		Date ven = new Date(hoy.getYear(), hoy.getMonth(), vencim);
-		for (int i = 0; i <10; i++) {
-//			reservas.add(new Reserva(filtroS.get(i).getTitulo(), filtroS.get(i).getTema(), f.format(hoy), f.format(ven)));
-			reservas.add(new Reserva("abcd", "abcd",f.format(hoy),f.format(ven)));
-			System.out.println("Agregado "+reservas.get(i).getTitulo());
-		}
-		for (int i = 0; i < reservas.size(); i++) {
-			System.out.println(reservas.get(i).getTitulo());
+		for (int i = 0; i <titulos.length; i++) {
+			reservas.add(new Reserva(titulos[i], buscarLibro(titulos[i]).getTema(), f.format(hoy), f.format(ven)));
 		}
 	}
 	
@@ -161,6 +156,15 @@ public class ClienteBean {
 			usuario = sofia.getNombre();
 			return "Principal";
 		}
+	}
+
+	
+	public String[] getTitulos() {
+		return titulos;
+	}
+
+	public void setTitulos(String[] titulos) {
+		this.titulos = titulos;
 	}
 
 	public String getNombre() {
