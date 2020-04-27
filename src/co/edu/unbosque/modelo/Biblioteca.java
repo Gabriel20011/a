@@ -37,7 +37,6 @@ public class Biblioteca {
 			for (int j = 0; j < libros.size(); j++) {
 				if(libros.get(j).getTema().equals(temas.get(i))) {
 					filtro.add(libros.get(j));
-					
 				}
 			}
 		}

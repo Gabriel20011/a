@@ -1,7 +1,10 @@
 package co.edu.unbosque.modelo;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -12,6 +15,7 @@ public class ClienteBean {
 	String nombre,apellido,documento,usuario,contraseña, reContraseña;
 
 	int numlibros;
+	ArrayList<String> titulos;
 	ArrayList<Reserva> reservas;
 	ArrayList<Libro> libros ;
 	static ArrayList<Libro> librosBBDD = DAO.getLibros();
@@ -27,6 +31,7 @@ public class ClienteBean {
 		this.documento = documento;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
+		titulos = new ArrayList<String>();
 		reservas  = new ArrayList<Reserva>();
 		libros = new ArrayList<Libro>();
 		this.numlibros = 0;
@@ -57,6 +62,30 @@ public class ClienteBean {
 			if (i.getnLibro() == nReserva) {
 				return i;
 			}
+		}
+		return null;
+	}
+	
+	public Libro buscarLibro(String titulo) {
+		Libro lib = null;
+		for (int i = 0; i < libros.size(); i++) {
+			if (titulo.equals(libros.get(i).getTitulo())) {
+				lib = libros.get(i);
+			}
+		}
+		return lib;
+	}
+	
+	public String agregarReservas() {
+		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println("Agregado");
+		Date hoy = new Date();
+		int vencim = hoy.getDay()+3;
+		Date ven = new Date(hoy.getYear(), hoy.getMonth(), vencim);
+		titulos.add("It");
+		for (int i = 0; i < titulos.size(); i++) {
+			reservas.add(new Reserva(titulos.get(i), buscarLibro(titulos.get(i)).getTema(), f.format(hoy), f.format(ven)));
+			System.out.println("Agregado"+titulos.get(i));
 		}
 		return null;
 	}
@@ -115,6 +144,30 @@ public class ClienteBean {
 		reservas.add(nueva);
 		numlibros++;
 		
+	}
+
+	public ArrayList<String> getTitulos() {
+		return titulos;
+	}
+
+	public void setTitulos(ArrayList<String> titulos) {
+		this.titulos = titulos;
+	}
+
+	public static ArrayList<Libro> getLibrosBBDD() {
+		return librosBBDD;
+	}
+
+	public static void setLibrosBBDD(ArrayList<Libro> librosBBDD) {
+		ClienteBean.librosBBDD = librosBBDD;
+	}
+
+	public static ArrayList<ClienteBean> getListaClientes() {
+		return listaClientes;
+	}
+
+	public static void setListaClientes(ArrayList<ClienteBean> listaClientes) {
+		ClienteBean.listaClientes = listaClientes;
 	}
 
 	public ArrayList<Libro> getLibros() {
