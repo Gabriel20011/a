@@ -19,7 +19,11 @@
          Usuario: <h:inputText id= "usuario" value= "#{clienteBean.usuario}"></h:inputText><br></br>
          Contraseña: <h:inputText id= "contraseña" value= "#{clienteBean.contraseña}"></h:inputText><br></br>
          verifica la contraseña: <h:inputText id= "Rcontraseña" value= "#{clienteBean.reContraseña}"></h:inputText><br></br>
-         <p><h:commandButton value="Registrate" action="#{clienteBean.doGuardar}"/></p>
+         <h:commandButton value="Registrate" action="#{clienteBean.doGuardar}"/>
+         <h:commandButton value="Volver" action= "Principal"/><br/>
+         <a href="https://www.unbosque.edu.co/" title="Unbosque">
+		<img src="data/ubosque.png" width="300" height="200" />
+		</a>
       </h:form>
    </h:body>
 </html>

@@ -17,10 +17,7 @@
       <h:form>
          <h3>HISTORIAL DE RESERVAS</h3>
          
-        
-         <h:dataTable value="#{clienteBean.reservas}" var="reservas" border="2"
-			cellspacing="1" cellpadding="1">
-			<ui:repeat value="#{clienteBean.reservas}" var = "reserva">
+         <h:dataTable value="#{clienteBean.reservas}" var="reserva" border="2">
 			<h:column>
 				<f:facet name="header">Título</f:facet>
                     #{reserva.titulo}
@@ -35,10 +32,10 @@
                 </h:column>
 			<h:column>
 				<f:facet name="header">Fecha de Devolución</f:facet>
-                    hola
+                    #{reserva.devolucion}
                 </h:column>
-			 </ui:repeat>
 		</h:dataTable>
+		
         <p><h:commandButton value="Volver" action="Principal"/></p>
         <a href="https://www.unbosque.edu.co/" title="Unbosque">
 		<img src="data/ubosque.png" width="300" height="200" />

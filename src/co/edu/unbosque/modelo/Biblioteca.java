@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import javax.faces.bean.ManagedBean;
 
-
 @ManagedBean
 public class Biblioteca {
 	
@@ -13,7 +12,6 @@ public class Biblioteca {
 	static ArrayList<Libro> libros = DAO.getLibros();
 	ArrayList<String> seleccionados = new ArrayList<String>();
 	ArrayList<Libro> filtroS = new ArrayList<Libro>();
-	
 
 	ArrayList<String> temas = new ArrayList<String>();
 	public Biblioteca() {
@@ -42,6 +40,7 @@ public class Biblioteca {
 		}
 		return "Reserva";
 	}
+
 
 	public ArrayList<Libro> getFiltroS() {
 		return filtroS;

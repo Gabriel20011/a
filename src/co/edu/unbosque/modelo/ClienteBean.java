@@ -15,14 +15,14 @@ public class ClienteBean {
 	String nombre,apellido,documento,usuario,contraseña, reContraseña;
 
 	int numlibros;
-	ArrayList<String> titulos;
-	ArrayList<Reserva> reservas;
-	ArrayList<Libro> libros ;
+	ArrayList<String> titulos = new ArrayList<String>();
+	ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	ArrayList<Libro> libros  = new ArrayList<Libro>();
 	static ArrayList<Libro> librosBBDD = DAO.getLibros();
 	static ArrayList<ClienteBean> listaClientes = DAO.getClientes();
 
 	public ClienteBean() {
-
+			agregarReservas();
 	}
 
 	public ClienteBean(String nombre, String apellido, String documento, String usuario, String contraseña) {
@@ -31,9 +31,6 @@ public class ClienteBean {
 		this.documento = documento;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
-		titulos = new ArrayList<String>();
-		reservas  = new ArrayList<Reserva>();
-		libros = new ArrayList<Libro>();
 		this.numlibros = 0;
 
 	}
@@ -55,40 +52,8 @@ public class ClienteBean {
 		}
 		
 		this.numlibros = this.libros.size()-1;
-
 	}
-	public Libro buscarLibro(int nReserva) {
-		for (Libro i : librosBBDD) {
-			if (i.getnLibro() == nReserva) {
-				return i;
-			}
-		}
-		return null;
-	}
-	
-	public Libro buscarLibro(String titulo) {
-		Libro lib = null;
-		for (int i = 0; i < libros.size(); i++) {
-			if (titulo.equals(libros.get(i).getTitulo())) {
-				lib = libros.get(i);
-			}
-		}
-		return lib;
-	}
-	
-	public String agregarReservas() {
-		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("Agregado");
-		Date hoy = new Date();
-		int vencim = hoy.getDay()+3;
-		Date ven = new Date(hoy.getYear(), hoy.getMonth(), vencim);
-		titulos.add("It");
-		for (int i = 0; i < titulos.size(); i++) {
-			reservas.add(new Reserva(titulos.get(i), buscarLibro(titulos.get(i)).getTema(), f.format(hoy), f.format(ven)));
-			System.out.println("Agregado"+titulos.get(i));
-		}
-		return null;
-	}
+	 
 
 	public String getReContraseña() {
 		return reContraseña;
@@ -178,6 +143,45 @@ public class ClienteBean {
 		this.libros = libros;
 	}
 
+	public Libro buscarLibro(int nReserva) {
+		for (Libro i : librosBBDD) {
+			if (i.getnLibro() == nReserva) {
+				return i;
+			}
+		}
+		return null;
+	}
+	
+	public Libro buscarLibro(String titulo) {
+		Libro lib = null;
+		for (int i = 0; i < libros.size(); i++) {
+			if (titulo.equals(libros.get(i).getTitulo())) {
+				lib = libros.get(i);
+			}
+		}
+		return lib;
+	}
+	
+	public void agregarReservas() {
+//		FacesContext context = javax.faces.context.FacesContext.getCurrentInstance();
+//		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+//		Biblioteca nB =(Biblioteca) session.getAttribute("biblioteca.filtroS");
+//		for (int i = 0; i < nB.getFiltroS().size(); i++) {
+//			titulos.add(nB.getFiltroS().get(i).getTitulo());
+//		}
+		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println("Agregado");
+		Date hoy = new Date();
+		int vencim = hoy.getDay()+3;
+		Date ven = new Date(hoy.getYear(), hoy.getMonth(), vencim);
+		for (int i = 0; i < 4; i++) {
+//			reservas.add(new Reserva(titulos.get(i), buscarLibro(titulos.get(i)).getTema(), f.format(hoy), f.format(ven)));
+			reservas.add(new Reserva("abcd", "abcd",f.format(hoy),f.format(ven)));
+			System.out.println("Agregado "+reservas.get(i).getTitulo());
+		}
+
+	}
+	
 	public String doGuardar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
@@ -206,11 +210,11 @@ public class ClienteBean {
 			}
 		}
 		if (sofia == null) {
-			nombre = "Clave o Usuario incorrecta Papu :v";
+			usuario = "Clave o Usuario incorrecta";
 			return "Login";
 		}
 		else {
-			nombre = sofia.getNombre();
+			usuario = sofia.getNombre();
 			return "Principal";
 		}
 	}

@@ -30,16 +30,17 @@
          <h:commandButton value="Buscar" action= "#{biblioteca.filtro}"></h:commandButton>
          <h3>Lista de libros</h3>
           <ui:repeat value="#{biblioteca.filtroS}" var = "fil">
-         <h:selectManyListbox value = "#{clienteBean.titulos}"> 
+         <h:selectManyListbox value = "#{biblioteca.filtroS}">
 		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" />
 		</h:selectManyListbox><br/>
 		 </ui:repeat>
-		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}" onclick= "alert('Libros reservados')"></h:commandButton>
+		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}"/>
+		<h:commandButton value="Historial" action= "Historial"/>
         <h:commandButton value="Volver" action= "Principal"/>
-
-		 <a href="https://www.unbosque.edu.co/" title="Unbosque">
+		
+      </h:form>
+       <a href="https://www.unbosque.edu.co/" title="Unbosque">
 		<img src="data/ubosque.png" width="300" height="200" />
 		</a>
-      </h:form>
    </h:body>
 </html>
