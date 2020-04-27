@@ -73,6 +73,7 @@ public class ClienteBean implements Serializable{
 		return "Reserva";
 	}
 	
+	
 	public String[] obtenerTitulos() {
 		String[] tituls = null;
 		
