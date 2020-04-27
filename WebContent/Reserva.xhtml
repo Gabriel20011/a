@@ -31,8 +31,8 @@
          <h3>Lista de libros</h3>
           <ui:repeat value="#{biblioteca.filtroS}" var = "fil">
          <h:selectManyListbox value = "#{clienteBean.titulos}"> 
-		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" /><br/>
-		</h:selectManyListbox>
+		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" />
+		</h:selectManyListbox><br/>
 		 </ui:repeat>
 		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}" onclick= "alert('Libros reservados')"></h:commandButton>
         <h:commandButton value="Volver" action= "Principal"/>

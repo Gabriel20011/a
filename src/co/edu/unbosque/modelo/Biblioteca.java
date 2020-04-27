@@ -11,7 +11,7 @@ public class Biblioteca {
 	
 	
 	static ArrayList<Libro> libros = DAO.getLibros();
-	String[] seleccionados = {};
+	ArrayList<String> seleccionados = new ArrayList<String>();
 	ArrayList<Libro> filtroS = new ArrayList<Libro>();
 	
 
@@ -33,9 +33,9 @@ public class Biblioteca {
 	
 	public String filtro(){
 		
-		for (int i = 0; i < seleccionados.length; i++) {
+		for (int i = 0; i < seleccionados.size(); i++) {
 			for (int j = 0; j < libros.size(); j++) {
-				if(libros.get(j).getTema().equals(temas.get(i))) {
+				if(libros.get(j).getTema().equals(seleccionados.get(i))) {
 					filtroS.add(libros.get(j));
 				}
 			}
@@ -67,12 +67,21 @@ public class Biblioteca {
 	public void setFiltro(ArrayList<Libro> filtroS) {
 		this.filtroS = filtroS;
 	}
-	public String[] getSeleccionados() {
+
+	public static ArrayList<Libro> getLibros() {
+		return libros;
+	}
+
+	public static void setLibros(ArrayList<Libro> libros) {
+		Biblioteca.libros = libros;
+	}
+
+	public ArrayList<String> getSeleccionados() {
 		return seleccionados;
 	}
 
-	public void setSeleccionados(String[] seleccionados) {
+	public void setSeleccionados(ArrayList<String> seleccionados) {
 		this.seleccionados = seleccionados;
 	}
-	
+
 }
