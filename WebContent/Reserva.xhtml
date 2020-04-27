@@ -15,42 +15,28 @@
    <h:body>
  		
       <h:form>
-         <h1>RESERVA TUS LIBROS</h1>
-         <table>
-            <tr>
-               <td><h3>Selecciona los temas:</h3></td>
-            </tr>
-           <tr><td>
-         		<h:selectManyCheckbox value="#{biblioteca.seleccionados}">
-               		<f:selectItem itemValue="Terror" itemLabel="Terror"/>
-               		<f:selectItem itemValue="Ciencia" itemLabel="Ciencia"/>
-               		<f:selectItem itemValue="Literatura colombiana" itemLabel="Literatura Colombiana"/>
-               		<f:selectItem itemValue="Fantasia" itemLabel="Fantasia"/>
-               		<f:selectItem itemValue="Drama" itemLabel="Drama"/>
-               		<f:selectItem itemValue="Historia" itemLabel="Historia"/>
-               	</h:selectManyCheckbox>
-               </td>
-            </tr> 
-		<tr><td>
-         <h:button value="Buscar" action= "#{biblioteca.filtro}"></h:button>
-         </td></tr>
-         <tr>
-         <td><h3>Lista de libros</h3></td>
-         </tr> 
-         <tr><td>
-          <ui:repeat value="#{biblioteca.filtro}" var = "fil">
+        <h1>RESERVA TUS LIBROS</h1>
+
+        <h3>Selecciona los temas:</h3>
+
+		<h:selectManyCheckbox value="#{biblioteca.seleccionados}">
+        	<f:selectItem itemValue="Terror" itemLabel="Terror"/>
+            <f:selectItem itemValue="Ciencia" itemLabel="Ciencia"/>
+           	<f:selectItem itemValue="Literatura colombiana" itemLabel="Literatura Colombiana"/>
+            <f:selectItem itemValue="Fantasia" itemLabel="Fantasia"/>
+         	<f:selectItem itemValue="Drama" itemLabel="Drama"/>
+            <f:selectItem itemValue="Historia" itemLabel="Historia"/>
+            	</h:selectManyCheckbox>
+         <h:commandButton value="Buscar" action= "#{biblioteca.filtro}"></h:commandButton>
+         <h3>Lista de libros</h3>
+          <ui:repeat value="#{biblioteca.filtroS}" var = "fil">
          <h:selectManyListbox value = "#{clienteBean.titulos}"> 
 		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" /><br/>
 		</h:selectManyListbox>
 		 </ui:repeat>
-		</td></tr>
-        <tr>
-        <td>
 		<h:commandButton value="Reservar" action= "#{clienteBean.agregarReservas}" onclick= "alert('Libros reservados')"></h:commandButton>
         <h:commandButton value="Volver" action= "Principal"/>
-        </td>
-		</tr>
-		</table>
+
 		 <a href="https://www.unbosque.edu.co/" title="Unbosque">
 		<img src="data/ubosque.png" width="300" height="200" />
 		</a>
