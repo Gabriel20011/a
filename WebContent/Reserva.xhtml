@@ -19,7 +19,7 @@
 
         <h3>Selecciona los temas:</h3>
 
-		<h:selectManyCheckbox value="#{biblioteca.seleccionados}">
+		<h:selectManyCheckbox value="#{clienteBean.seleccionados}">
         	<f:selectItem itemValue="Terror" itemLabel="Terror"/>
             <f:selectItem itemValue="Ciencia" itemLabel="Ciencia"/>
            	<f:selectItem itemValue="Literatura colombiana" itemLabel="Literatura Colombiana"/>
@@ -27,10 +27,10 @@
          	<f:selectItem itemValue="Drama" itemLabel="Drama"/>
             <f:selectItem itemValue="Historia" itemLabel="Historia"/>
             	</h:selectManyCheckbox>
-         <h:commandButton value="Buscar" action= "#{biblioteca.filtro}"></h:commandButton>
+         <h:commandButton value="Buscar" action= "#{clienteBean.filtro}"></h:commandButton>
          <h3>Lista de libros</h3>
-          <ui:repeat value="#{biblioteca.filtroS}" var = "fil">
-         <h:selectManyListbox value = "#{biblioteca.filtroS}">
+          <ui:repeat value="#{clienteBean.filtroS}" var = "fil">
+         <h:selectManyListbox value = "#{clienteBean.filtroS}">
 		   <f:selectItem itemValue = "#{fil.titulo}" itemLabel = "#{fil.titulo}" />
 		</h:selectManyListbox><br/>
 		 </ui:repeat>
